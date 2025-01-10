@@ -69,22 +69,29 @@ namespace AiubLink
 
         private void loginbutton_Click(object sender, EventArgs e)
         {
-            if (nametextbox.Text == "Enter Your Name" || string.IsNullOrWhiteSpace(nametextbox.Text))
-            {
-                MessageBox.Show("Please enter your Name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (passtextbox.Text == "Enter Your Password" || string.IsNullOrWhiteSpace(passtextbox.Text))
-            {
-                MessageBox.Show("Please enter your password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             if (nametextbox.Text == "Admin" && passtextbox.Text == "Admin")
             {
                 AdminMainPage adminMainPage = new AdminMainPage();
                 adminMainPage.Show();
                 this.Hide();
+            }
+
+            else if (nametextbox.Text == "Enter Your Name" || string.IsNullOrWhiteSpace(nametextbox.Text))
+            {
+                MessageBox.Show("Please enter your Name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            else if (passtextbox.Text == "Enter Your Password" || string.IsNullOrWhiteSpace(passtextbox.Text))
+            {
+                MessageBox.Show("Please enter your password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            else
+            {
+                MessageBox.Show("Invalid Information. Please Try Again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 

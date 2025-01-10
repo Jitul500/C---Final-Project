@@ -202,6 +202,7 @@ namespace AiubLink
             // Reset visibility of checkboxes
             faccheckBox.Visible = true;
             studentcheckBox.Visible = true;
+            submitbutton.Visible = false;
         }
 
         private byte[] GetPhotoData()
