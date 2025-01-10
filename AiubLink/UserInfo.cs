@@ -17,7 +17,9 @@ namespace AiubLink
         public DateTime DOB { get; set; }
         public string Password { get; set; }
 
-        public UserInfo(string name, int phone, string userID, string email, byte[] photo, DateTime dob, string password)
+        public string Role { get; set; }
+
+        public UserInfo(string name, int phone, string userID, string email, byte[] photo, DateTime dob, string password, string role)
         {
             Name = name;
             Phone = phone;
@@ -26,6 +28,7 @@ namespace AiubLink
             Photo = photo;
             DOB = dob;
             Password = password;
+            Role = role;
         }
     }
 }

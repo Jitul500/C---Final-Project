@@ -23,7 +23,7 @@ namespace AiubLink
             InitializeComponent();
         }
 
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\rezau\OneDrive\Documents\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
+        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CSharp FinalProject\AiubLink\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
 
         private void backbutton_Click(object sender, EventArgs e)
         {
@@ -91,9 +91,78 @@ namespace AiubLink
 
         private void submitbutton_Click(object sender, EventArgs e)
         {
+            // Validate that all required fields are filled
+            if (string.IsNullOrWhiteSpace(nametextBox.Text) ||
+                string.IsNullOrWhiteSpace(phonetextBox.Text) ||
+                string.IsNullOrWhiteSpace(idtextBox.Text) ||
+                string.IsNullOrWhiteSpace(emailtextBox.Text) ||
+                pictureBox1.Image == null ||
+                string.IsNullOrWhiteSpace(passtextBox.Text) ||
+                string.IsNullOrWhiteSpace(confirmpasstextBox.Text))
+            {
+                MessageBox.Show("Please fill all the fields and upload a photo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validate Name (must be alphabets and spaces only)
+            if (!System.Text.RegularExpressions.Regex.IsMatch(nametextBox.Text, @"^[A-Za-z\s]+$"))
+            {
+                MessageBox.Show("Name can only contain alphabets and spaces.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validate Phone Number (must be 11 digits)
+            if (!int.TryParse(phonetextBox.Text, out _) || phonetextBox.Text.Length != 11)
+            {
+                MessageBox.Show("Phone number must be interger and contains exactly 11 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validate User ID
+            if (studentcheckBox.Checked)
+            {
+                // Student ID must follow the format **-*****-*
+                if (!System.Text.RegularExpressions.Regex.IsMatch(idtextBox.Text, @"^\d{2}-\d{5}-\d$"))
+                {
+                    MessageBox.Show("Student ID must follow the format **-*****-*.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else if (faccheckBox.Checked)
+            {
+                // Faculty ID must follow the format ***-****-**
+                if (!System.Text.RegularExpressions.Regex.IsMatch(idtextBox.Text, @"^\d{3}-\d{4}-\d{2}$"))
+                {
+                    MessageBox.Show("Faculty ID must follow the format ***-****-**.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            // Validate Email (must end with @gmail.com)
+            if (!emailtextBox.Text.EndsWith("@gmail.com"))
+            {
+                MessageBox.Show("Email must end with '@gmail.com'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validate Date of Birth (must be year 2002 or earlier)
+            if (dateTimePicker1.Value.Year > 2002)
+            {
+                MessageBox.Show("Date of Birth must be the year 2002 or earlier.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validate Password (must match confirm password)
+            if (passtextBox.Text != confirmpasstextBox.Text)
+            {
+                MessageBox.Show("Passwords do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // If all validations pass, proceed with the registration process
             try
             {
-                // Collect user input from form controls
+                // Collect user input
                 string name = nametextBox.Text.Trim();
                 int phone = int.Parse(phonetextBox.Text.Trim());
                 string userID = idtextBox.Text.Trim();
@@ -101,9 +170,17 @@ namespace AiubLink
                 DateTime dob = dateTimePicker1.Value;
                 string password = passtextBox.Text.Trim();
                 byte[] photo = GetPhotoData(); // Retrieve photo data from PictureBox
-
+                string role;
+                if (studentcheckBox.Checked)
+                {
+                    role = "Student";
+                }
+                else
+                {
+                    role = "Faculty";
+                }
                 // Create UserInfo object
-                UserInfo newUser = new UserInfo(name, phone, userID, email, photo, dob, password);
+                UserInfo newUser = new UserInfo(name, phone, userID, email, photo, dob, password,role);
 
                 // Insert user into database
                 InsertUserIntoDatabase(newUser);
@@ -121,6 +198,10 @@ namespace AiubLink
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            // Reset visibility of checkboxes
+            faccheckBox.Visible = true;
+            studentcheckBox.Visible = true;
         }
 
         private byte[] GetPhotoData()
@@ -144,8 +225,8 @@ namespace AiubLink
             {
                 connection.Open();
 
-                string query = "INSERT INTO AiubLink (Name, Phone, UserID, Email, Photo, DOB, Password) " +
-                               "VALUES (@Name, @Phone, @UserID, @Email, @Photo, @DOB, @Password)";
+                string query = "INSERT INTO AiubLink (Name, Phone, UserID, Email, Photo, DOB, Password, Role) " +
+                               "VALUES (@Name, @Phone, @UserID, @Email, @Photo, @DOB, @Password, @Role)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -156,6 +237,7 @@ namespace AiubLink
                     command.Parameters.Add("@Photo", SqlDbType.VarBinary).Value = user.Photo ?? (object)DBNull.Value;
                     command.Parameters.AddWithValue("@DOB", user.DOB);
                     command.Parameters.AddWithValue("@Password", user.Password);
+                    command.Parameters.AddWithValue("@Role", user.Role);
 
                     command.ExecuteNonQuery();
                 }
@@ -214,10 +296,11 @@ namespace AiubLink
         private void sendcodebutton_Click(object sender, EventArgs e)
         {
             sendcodepanel.Visible = true;
-            Random rnd = new Random();
-            otpCode = Convert.ToString(rnd.Next(100000, 999999999));
-            string message = "Your OTP Verification Code Is : " + otpCode + "\n";
 
+            Random rnd = new Random();
+            otpCode = rnd.Next(100000, 99999999).ToString();
+            string message = "Your OTP Verification Code Is: " + otpCode + "\n";
+         
             SmtpClient Client = new SmtpClient()
             {
                 Host = "smtp.gmail.com",
@@ -231,25 +314,56 @@ namespace AiubLink
                     Password = "cpmrtbkcnnsxuoqx"
                 }
             };
-            MailAddress FromEmail = new MailAddress("student.aiub.ai@gmail.com", "Admin");
-            MailAddress ToEmail = new MailAddress(emailtextBox.Text, "Receiver");
+          
+            MailAddress FromEmail = new MailAddress("student.aiub.ai@gmail.com", "Admin");          
+            MailAddress ToEmail;
+            
+            if (studentcheckBox.Checked)
+            {
+                ToEmail = new MailAddress(emailtextBox.Text, "Receiver");
+                faccheckBox.Visible = false;
+            }
+            else if (faccheckBox.Checked)
+            {
+                ToEmail = new MailAddress("shahariarjitul1@gmail.com", "Receiver");
+                studentcheckBox.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Please select either Student or Faculty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            
             MailMessage Message = new MailMessage()
             {
                 From = FromEmail,
                 Subject = "Account Verification Code",
-                Body = message + "You Don't Need To Reply To This Mail...",
+                Body = message + "You Don't Need To Reply To This Mail..."
             };
             Message.To.Add(ToEmail);
 
+            
             try
             {
-                Client.Send(Message);
-                MessageBox.Show("Email is Sent Successfully...", "Done");
+                if (studentcheckBox.Checked)
+                {
+
+                    Client.Send(Message);
+                    MessageBox.Show("OTP has been sent successfully to " + ToEmail.Address, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    Client.Send(Message);
+                    MessageBox.Show("OTP has been sent successfully to Admin's Email" , "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            
             }
             catch (Exception ex)
             {
-                MessageBox.Show("UnSuccessful,There is a problem Somewhere\n" + ex.Message, "Error");
+                MessageBox.Show("Unsuccessful. There was a problem:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        
 
         }
 

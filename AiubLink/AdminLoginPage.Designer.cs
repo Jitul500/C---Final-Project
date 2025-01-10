@@ -38,6 +38,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.backbutton = new System.Windows.Forms.Button();
             this.exitbutton = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,6 +95,7 @@
             this.nametextbox.Size = new System.Drawing.Size(388, 23);
             this.nametextbox.TabIndex = 8;
             this.nametextbox.Text = "Enter Your Name";
+            this.nametextbox.TextChanged += new System.EventHandler(this.nametextbox_TextChanged);
             this.nametextbox.Enter += new System.EventHandler(this.nametextbox_Enter);
             this.nametextbox.Leave += new System.EventHandler(this.nametextbox_Leave);
             // 
@@ -149,12 +151,27 @@
             this.exitbutton.UseVisualStyleBackColor = false;
             this.exitbutton.Click += new System.EventHandler(this.exitbutton_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkBox1.Location = new System.Drawing.Point(695, 405);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(125, 20);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "Show Password";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // AdminLoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(172)))), ((int)(((byte)(223)))));
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.exitbutton);
             this.Controls.Add(this.backbutton);
             this.Controls.Add(this.passtextbox);
@@ -185,5 +202,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button backbutton;
         private System.Windows.Forms.Button exitbutton;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

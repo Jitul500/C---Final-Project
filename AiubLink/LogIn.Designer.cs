@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogIn));
             this.Backbutton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.passtextbox = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.exitbutton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -39,11 +41,9 @@
             this.createaccountbutton = new System.Windows.Forms.Button();
             this.forgotbutton = new System.Windows.Forms.Button();
             this.signintext = new System.Windows.Forms.Label();
-            this.idtextbox = new System.Windows.Forms.RichTextBox();
             this.LoginText = new System.Windows.Forms.Label();
-            this.passtextbox = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.idtextbox = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +66,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(172)))), ((int)(((byte)(223)))));
+            this.panel2.Controls.Add(this.idtextbox);
+            this.panel2.Controls.Add(this.passtextbox);
             this.panel2.Controls.Add(this.checkBox1);
             this.panel2.Controls.Add(this.exitbutton);
             this.panel2.Controls.Add(this.panel3);
@@ -75,14 +77,39 @@
             this.panel2.Controls.Add(this.createaccountbutton);
             this.panel2.Controls.Add(this.forgotbutton);
             this.panel2.Controls.Add(this.signintext);
-            this.panel2.Controls.Add(this.idtextbox);
             this.panel2.Controls.Add(this.LoginText);
-            this.panel2.Controls.Add(this.passtextbox);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(525, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(737, 673);
             this.panel2.TabIndex = 3;
+            // 
+            // passtextbox
+            // 
+            this.passtextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(172)))), ((int)(((byte)(223)))));
+            this.passtextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.passtextbox.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F);
+            this.passtextbox.Location = new System.Drawing.Point(178, 330);
+            this.passtextbox.Name = "passtextbox";
+            this.passtextbox.Size = new System.Drawing.Size(388, 23);
+            this.passtextbox.TabIndex = 14;
+            this.passtextbox.Text = "Enter Your Password";
+            this.passtextbox.Enter += new System.EventHandler(this.passtextbox_Enter_1);
+            this.passtextbox.Leave += new System.EventHandler(this.passtextbox_Leave_1);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkBox1.Location = new System.Drawing.Point(178, 373);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(125, 20);
+            this.checkBox1.TabIndex = 13;
+            this.checkBox1.Text = "Show Password";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // exitbutton
             // 
@@ -140,6 +167,7 @@
             this.loginbutton.TabIndex = 8;
             this.loginbutton.Text = "Log In";
             this.loginbutton.UseVisualStyleBackColor = false;
+            this.loginbutton.Click += new System.EventHandler(this.loginbutton_Click);
             // 
             // createaccountbutton
             // 
@@ -184,19 +212,6 @@
             this.signintext.Text = "Sign in to Continue";
             this.signintext.Click += new System.EventHandler(this.signintext_Click);
             // 
-            // idtextbox
-            // 
-            this.idtextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(172)))), ((int)(((byte)(223)))));
-            this.idtextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.idtextbox.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idtextbox.Location = new System.Drawing.Point(178, 240);
-            this.idtextbox.Name = "idtextbox";
-            this.idtextbox.Size = new System.Drawing.Size(388, 37);
-            this.idtextbox.TabIndex = 3;
-            this.idtextbox.Text = "Enter Your ID";
-            this.idtextbox.Enter += new System.EventHandler(this.idtextbox_Enter);
-            this.idtextbox.Leave += new System.EventHandler(this.idtextbox_Leave);
-            // 
             // LoginText
             // 
             this.LoginText.AutoSize = true;
@@ -206,19 +221,6 @@
             this.LoginText.Size = new System.Drawing.Size(320, 103);
             this.LoginText.TabIndex = 0;
             this.LoginText.Text = "Log In";
-            // 
-            // passtextbox
-            // 
-            this.passtextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(172)))), ((int)(((byte)(223)))));
-            this.passtextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.passtextbox.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F);
-            this.passtextbox.Location = new System.Drawing.Point(178, 330);
-            this.passtextbox.Name = "passtextbox";
-            this.passtextbox.Size = new System.Drawing.Size(388, 37);
-            this.passtextbox.TabIndex = 1;
-            this.passtextbox.Text = "Enter Your Password";
-            this.passtextbox.Enter += new System.EventHandler(this.passtextbox_Enter);
-            this.passtextbox.Leave += new System.EventHandler(this.passtextbox_Leave);
             // 
             // pictureBox1
             // 
@@ -231,17 +233,18 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // checkBox1
+            // idtextbox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox1.Location = new System.Drawing.Point(178, 373);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(125, 20);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "Show Password";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.idtextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(172)))), ((int)(((byte)(223)))));
+            this.idtextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.idtextbox.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F);
+            this.idtextbox.Location = new System.Drawing.Point(178, 240);
+            this.idtextbox.Name = "idtextbox";
+            this.idtextbox.Size = new System.Drawing.Size(388, 23);
+            this.idtextbox.TabIndex = 15;
+            this.idtextbox.Text = "Enter Your ID";
+            this.idtextbox.Enter += new System.EventHandler(this.idtextbox_Enter_1);
+            this.idtextbox.Leave += new System.EventHandler(this.idtextbox_Leave_1);
             // 
             // LogIn
             // 
@@ -278,8 +281,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button exitbutton;
-        private System.Windows.Forms.RichTextBox idtextbox;
-        private System.Windows.Forms.RichTextBox passtextbox;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox passtextbox;
+        private System.Windows.Forms.TextBox idtextbox;
     }
 }

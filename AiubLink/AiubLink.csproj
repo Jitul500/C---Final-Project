@@ -52,6 +52,18 @@
     <Compile Include="AdminLoginPage.Designer.cs">
       <DependentUpon>AdminLoginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminMainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMainPage.Designer.cs">
+      <DependentUpon>AdminMainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FacultyMainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacultyMainPage.Designer.cs">
+      <DependentUpon>FacultyMainPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="ForgetPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,9 +96,21 @@
     <Compile Include="RegistrationPage.Designer.cs">
       <DependentUpon>RegistrationPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="StudentMainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentMainPage.Designer.cs">
+      <DependentUpon>StudentMainPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInfo.cs" />
     <EmbeddedResource Include="AdminLoginPage.resx">
       <DependentUpon>AdminLoginPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminMainPage.resx">
+      <DependentUpon>AdminMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacultyMainPage.resx">
+      <DependentUpon>FacultyMainPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForgetPage.resx">
       <DependentUpon>ForgetPage.cs</DependentUpon>
@@ -112,6 +136,9 @@
     <EmbeddedResource Include="RegistrationPage.resx">
       <DependentUpon>RegistrationPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StudentMainPage.resx">
+      <DependentUpon>StudentMainPage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -126,6 +153,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DataBase\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
