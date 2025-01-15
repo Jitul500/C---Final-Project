@@ -58,6 +58,9 @@
     <Compile Include="AdminMainPage.Designer.cs">
       <DependentUpon>AdminMainPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="CalenderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FacultyMainPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminMainPage.resx">
       <DependentUpon>AdminMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalenderForm.resx">
+      <DependentUpon>CalenderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FacultyMainPage.resx">
       <DependentUpon>FacultyMainPage.cs</DependentUpon>
