@@ -28,5 +28,12 @@ namespace AiubLink
             logIn.Show();
             this.Hide();
         }
+
+        public void calenderbutton_Click(object sender, EventArgs e)
+        {
+            CalendarForm calendarForm = new CalendarForm(this);
+            calendarForm.Show();
+            this.Hide();
+        }
     }
 }

@@ -83,6 +83,7 @@
             this.calenderbutton.TabIndex = 4;
             this.calenderbutton.Text = "Calender";
             this.calenderbutton.UseVisualStyleBackColor = true;
+            this.calenderbutton.Click += new System.EventHandler(this.calenderbutton_Click);
             // 
             // FacultyMainPage
             // 

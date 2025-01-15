@@ -127,7 +127,7 @@ namespace AiubLink
             }
 
             // Database connection string
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CSharp FinalProject\AiubLink\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
 
             // SQL query to check if UserID and Password match
             string query = "SELECT Role FROM AiubLink WHERE UserID = @UserID AND Password = @Password";
