@@ -28,5 +28,30 @@ namespace AiubLink
             adminLoginPage.Show();
             this.Hide();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Phonelabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IDlabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
