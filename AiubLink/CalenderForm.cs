@@ -184,6 +184,7 @@ namespace AiubLink
             this.Name = "CalendarForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "D";
+            this.Load += new System.EventHandler(this.CalendarForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,6 +288,11 @@ namespace AiubLink
         {
             previousForm.Show();
             this.Close();
+        }
+
+        private void CalendarForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

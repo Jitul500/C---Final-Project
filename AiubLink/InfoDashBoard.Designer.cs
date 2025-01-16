@@ -28,24 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoDashBoard));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.updatebutton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Studentlabel1 = new System.Windows.Forms.Label();
             this.infopanel = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.emailtextBox = new System.Windows.Forms.TextBox();
+            this.idtextBox = new System.Windows.Forms.TextBox();
             this.Emaillabel1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.phonetextBox = new System.Windows.Forms.TextBox();
             this.IDlabel2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nametextBox = new System.Windows.Forms.TextBox();
             this.Phonelabel3 = new System.Windows.Forms.Label();
             this.StudentPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.exitbutton = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.infopanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -54,25 +63,47 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(3, 196);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1275, 420);
             this.dataGridView1.TabIndex = 18;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // button1
+            // updatebutton
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(828, 129);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(248, 41);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "MODIFY";
-            this.button1.UseVisualStyleBackColor = false;
+            this.updatebutton.BackColor = System.Drawing.SystemColors.Highlight;
+            this.updatebutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updatebutton.Location = new System.Drawing.Point(828, 129);
+            this.updatebutton.Name = "updatebutton";
+            this.updatebutton.Size = new System.Drawing.Size(248, 41);
+            this.updatebutton.TabIndex = 17;
+            this.updatebutton.Text = "MODIFY";
+            this.updatebutton.UseVisualStyleBackColor = false;
+            this.updatebutton.Click += new System.EventHandler(this.updatebutton_Click);
             // 
             // label1
             // 
@@ -97,46 +128,38 @@
             // infopanel
             // 
             this.infopanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.infopanel.Controls.Add(this.dateTimePicker1);
             this.infopanel.Controls.Add(this.dataGridView1);
-            this.infopanel.Controls.Add(this.button1);
-            this.infopanel.Controls.Add(this.textBox5);
+            this.infopanel.Controls.Add(this.updatebutton);
             this.infopanel.Controls.Add(this.label1);
-            this.infopanel.Controls.Add(this.textBox4);
+            this.infopanel.Controls.Add(this.emailtextBox);
             this.infopanel.Controls.Add(this.Studentlabel1);
-            this.infopanel.Controls.Add(this.textBox3);
+            this.infopanel.Controls.Add(this.idtextBox);
             this.infopanel.Controls.Add(this.Emaillabel1);
-            this.infopanel.Controls.Add(this.textBox2);
+            this.infopanel.Controls.Add(this.phonetextBox);
             this.infopanel.Controls.Add(this.IDlabel2);
-            this.infopanel.Controls.Add(this.textBox1);
+            this.infopanel.Controls.Add(this.nametextBox);
             this.infopanel.Controls.Add(this.Phonelabel3);
             this.infopanel.Location = new System.Drawing.Point(0, 105);
             this.infopanel.Name = "infopanel";
             this.infopanel.Size = new System.Drawing.Size(1278, 619);
             this.infopanel.TabIndex = 18;
             // 
-            // textBox5
+            // emailtextBox
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(299, 140);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(248, 30);
-            this.textBox5.TabIndex = 16;
+            this.emailtextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailtextBox.Location = new System.Drawing.Point(828, 78);
+            this.emailtextBox.Name = "emailtextBox";
+            this.emailtextBox.Size = new System.Drawing.Size(248, 30);
+            this.emailtextBox.TabIndex = 14;
             // 
-            // textBox4
+            // idtextBox
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(828, 78);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(248, 30);
-            this.textBox4.TabIndex = 14;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(828, 25);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(248, 30);
-            this.textBox3.TabIndex = 13;
+            this.idtextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idtextBox.Location = new System.Drawing.Point(828, 25);
+            this.idtextBox.Name = "idtextBox";
+            this.idtextBox.Size = new System.Drawing.Size(248, 30);
+            this.idtextBox.TabIndex = 13;
             // 
             // Emaillabel1
             // 
@@ -148,13 +171,13 @@
             this.Emaillabel1.TabIndex = 8;
             this.Emaillabel1.Text = "EMAIL";
             // 
-            // textBox2
+            // phonetextBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(299, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(248, 30);
-            this.textBox2.TabIndex = 12;
+            this.phonetextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phonetextBox.Location = new System.Drawing.Point(299, 75);
+            this.phonetextBox.Name = "phonetextBox";
+            this.phonetextBox.Size = new System.Drawing.Size(248, 30);
+            this.phonetextBox.TabIndex = 12;
             // 
             // IDlabel2
             // 
@@ -166,13 +189,13 @@
             this.IDlabel2.TabIndex = 9;
             this.IDlabel2.Text = "ID";
             // 
-            // textBox1
+            // nametextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(299, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(248, 30);
-            this.textBox1.TabIndex = 11;
+            this.nametextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nametextBox.Location = new System.Drawing.Point(299, 23);
+            this.nametextBox.Name = "nametextBox";
+            this.nametextBox.Size = new System.Drawing.Size(248, 30);
+            this.nametextBox.TabIndex = 11;
             // 
             // Phonelabel3
             // 
@@ -226,6 +249,77 @@
             this.exitbutton.UseVisualStyleBackColor = false;
             this.exitbutton.Click += new System.EventHandler(this.exitbutton_Click);
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "#";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Photo";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Name";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.HeaderText = "PhoneNo";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.HeaderText = "ID";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.HeaderText = "Email";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column7.HeaderText = "DOB";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column8.HeaderText = "Password";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(299, 145);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(248, 22);
+            this.dateTimePicker1.TabIndex = 19;
+            // 
             // InfoDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -250,21 +344,29 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button updatebutton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Studentlabel1;
         private System.Windows.Forms.Panel infopanel;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox emailtextBox;
+        private System.Windows.Forms.TextBox idtextBox;
         private System.Windows.Forms.Label Emaillabel1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox phonetextBox;
         private System.Windows.Forms.Label IDlabel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nametextBox;
         private System.Windows.Forms.Label Phonelabel3;
         private System.Windows.Forms.Panel StudentPanel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button exitbutton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
