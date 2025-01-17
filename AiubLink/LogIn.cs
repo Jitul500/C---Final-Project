@@ -130,7 +130,7 @@ namespace AiubLink
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
 
             // SQL query to check if UserID and Password match
-            string query = "SELECT Role FROM AiubLink WHERE UserID = @UserID AND Password = @Password";
+            string query = "SELECT Role, Status FROM AiubLink WHERE UserID = @UserID AND Password = @Password";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -143,34 +143,46 @@ namespace AiubLink
                         command.Parameters.AddWithValue("@UserID", idtextbox.Text.Trim());
                         command.Parameters.AddWithValue("@Password", passtextbox.Text.Trim());
 
-                        object result = command.ExecuteScalar();
-
-                        if (result != null)
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            // Retrieve the role from the database
-                            string role = result.ToString();
+                            if (reader.Read())
+                            {
+                                string role = reader["Role"].ToString();
+                                string status = reader["Status"].ToString();
 
-                            // Redirect to the respective page based on the role
-                            if (role == "Student")
-                            {
-                                StudentMainPage studentMainPage = new StudentMainPage();
-                                studentMainPage.Show();
-                                this.Hide();
-                            }
-                            else if (role == "Faculty")
-                            {
-                                FacultyMainPage facultyMainPage = new FacultyMainPage();
-                                facultyMainPage.Show();
-                                this.Hide();
+                                if (status == "Registered")
+                                {
+                                    // Redirect to the respective page based on the role
+                                    if (role == "Student")
+                                    {
+                                        StudentMainPage studentMainPage = new StudentMainPage();
+                                        studentMainPage.Show();
+                                        this.Hide();
+                                    }
+                                    else if (role == "Faculty")
+                                    {
+                                        FacultyMainPage facultyMainPage = new FacultyMainPage();
+                                        facultyMainPage.Show();
+                                        this.Hide();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Invalid role found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                                else if (status == "Pending")
+                                {
+                                    MessageBox.Show("Your account is under review. Please try again later.", "Account Review", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Your account status is not valid. Please contact support.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Invalid role found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Invalid UserID or Password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid UserID or Password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -178,6 +190,8 @@ namespace AiubLink
                 {
                     MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                                 
+               
             }
         }
     }

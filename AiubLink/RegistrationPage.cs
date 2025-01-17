@@ -131,9 +131,9 @@ namespace AiubLink
             else if (faccheckBox.Checked)
             {
                 // Faculty ID must follow the format ***-****-**
-                if (!System.Text.RegularExpressions.Regex.IsMatch(idtextBox.Text, @"^\d{3}-\d{4}-\d{2}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(idtextBox.Text, @"^\d{4}-\d{4}-\d{2}$"))
                 {
-                    MessageBox.Show("Faculty ID must follow the format ***-****-**.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Faculty ID must follow the format ****-****-**.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -162,15 +162,23 @@ namespace AiubLink
             // If all validations pass, proceed with the registration process
             try
             {
+                string userID = idtextBox.Text.Trim();
+
+                if (IsUserIDExists(userID))
+                {
+                    MessageBox.Show("The UserID already exists. Please use a different UserID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Collect user input
                 string name = nametextBox.Text.Trim();
                 int phone = int.Parse(phonetextBox.Text.Trim());
-                string userID = idtextBox.Text.Trim();
                 string email = emailtextBox.Text.Trim();
                 DateTime dob = dateTimePicker1.Value;
                 string password = passtextBox.Text.Trim();
                 byte[] photo = GetPhotoData(); // Retrieve photo data from PictureBox
                 string role;
+                string status = "Pending";
                 if (studentcheckBox.Checked)
                 {
                     role = "Student";
@@ -180,7 +188,7 @@ namespace AiubLink
                     role = "Faculty";
                 }
                 // Create UserInfo object
-                UserInfo newUser = new UserInfo(name, phone, userID, email, photo, dob, password,role);
+                UserInfo newUser = new UserInfo(name, phone, userID, email, photo, dob, password,role,status);
 
                 // Insert user into database
                 InsertUserIntoDatabase(newUser);
@@ -205,6 +213,23 @@ namespace AiubLink
             submitbutton.Visible = false;
         }
 
+        private bool IsUserIDExists(string userID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM AiubLink WHERE UserID = @UserID";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userID);
+
+                    int count = (int)command.ExecuteScalar();
+                    return count > 0; // Return true if UserID exists, otherwise false
+                }
+            }
+        }
+
         private byte[] GetPhotoData()
         {
             // Convert photo from PictureBox into a byte array
@@ -226,8 +251,8 @@ namespace AiubLink
             {
                 connection.Open();
 
-                string query = "INSERT INTO AiubLink (Name, Phone, UserID, Email, Photo, DOB, Password, Role) " +
-                               "VALUES (@Name, @Phone, @UserID, @Email, @Photo, @DOB, @Password, @Role)";
+                string query = "INSERT INTO AiubLink (Name, Phone, UserID, Email, Photo, DOB, Password, Role, Status) " +
+                               "VALUES (@Name, @Phone, @UserID, @Email, @Photo, @DOB, @Password, @Role, @Status)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -239,6 +264,7 @@ namespace AiubLink
                     command.Parameters.AddWithValue("@DOB", user.DOB);
                     command.Parameters.AddWithValue("@Password", user.Password);
                     command.Parameters.AddWithValue("@Role", user.Role);
+                    command.Parameters.AddWithValue("@Status", user.Status);
 
                     command.ExecuteNonQuery();
                 }

@@ -37,6 +37,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.StudentPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.studentlabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.facnumlabel = new System.Windows.Forms.Label();
+            this.stnumlabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -133,12 +137,57 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // studentlabel
+            // 
+            this.studentlabel.AutoSize = true;
+            this.studentlabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.studentlabel.Location = new System.Drawing.Point(335, 240);
+            this.studentlabel.Name = "studentlabel";
+            this.studentlabel.Size = new System.Drawing.Size(285, 34);
+            this.studentlabel.TabIndex = 7;
+            this.studentlabel.Text = "Total No of Faculties";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(810, 240);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(280, 34);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Total No of Students";
+            // 
+            // facnumlabel
+            // 
+            this.facnumlabel.AutoSize = true;
+            this.facnumlabel.Font = new System.Drawing.Font("Microsoft YaHei", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.facnumlabel.Location = new System.Drawing.Point(440, 365);
+            this.facnumlabel.Name = "facnumlabel";
+            this.facnumlabel.Size = new System.Drawing.Size(52, 58);
+            this.facnumlabel.TabIndex = 9;
+            this.facnumlabel.Text = "1";
+            // 
+            // stnumlabel
+            // 
+            this.stnumlabel.AutoSize = true;
+            this.stnumlabel.Font = new System.Drawing.Font("Microsoft YaHei", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stnumlabel.Location = new System.Drawing.Point(917, 365);
+            this.stnumlabel.Name = "stnumlabel";
+            this.stnumlabel.Size = new System.Drawing.Size(52, 58);
+            this.stnumlabel.TabIndex = 10;
+            this.stnumlabel.Text = "1";
+            // 
             // AdminMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.stnumlabel);
+            this.Controls.Add(this.facnumlabel);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.studentlabel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -151,6 +200,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -163,5 +213,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel StudentPanel;
+        private System.Windows.Forms.Label studentlabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label facnumlabel;
+        private System.Windows.Forms.Label stnumlabel;
     }
 }

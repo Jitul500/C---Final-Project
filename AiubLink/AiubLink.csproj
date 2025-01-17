@@ -64,6 +64,11 @@
     <Compile Include="AdminMainPage.Designer.cs">
       <DependentUpon>AdminMainPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="AiubLinkDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AiubLinkDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CalenderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +178,17 @@
     <EmbeddedResource Include="VideoConf.resx">
       <DependentUpon>VideoConf.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="AiubLinkDataSet.xsc">
+      <DependentUpon>AiubLinkDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AiubLinkDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AiubLinkDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AiubLinkDataSet.xss">
+      <DependentUpon>AiubLinkDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

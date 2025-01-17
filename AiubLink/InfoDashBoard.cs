@@ -8,29 +8,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace AiubLink
 {
     public partial class InfoDashBoard : Form
     {
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=False";
-        public InfoDashBoard()
+
+        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
+        private string userRole;
+        public InfoDashBoard(string role)
         {
             InitializeComponent();
-            LoadData();
-        }
-
-        private void LoadData()
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            userRole = role;
+            if(userRole == "Student")
             {
-                string query = "SELECT Id AS #, Photo, Name, Phone AS PhoneNo, UserID AS ID, Email, DOB, Role, Password FROM AiubLink";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-                dataGridView1.DataSource = dataTable;
+                studentdetailslabel.Text = "Student Details";
+                label2.Text = "Search By Student ID :";
+            }
+            else
+            {
+                studentdetailslabel.Text = "Faculty Details";
+                label2.Text = "Search By Faculty ID :";
             }
         }
+
+        
 
         private void exitbutton_Click(object sender, EventArgs e)
         {
@@ -45,61 +48,209 @@ namespace AiubLink
 
         private void updatebutton_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (string.IsNullOrWhiteSpace(idtextBox.Text))
             {
-                string id = dataGridView1.SelectedRows[0].Cells["#"].Value.ToString();
+                MessageBox.Show("Please enter the UserID to update the data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            try
+            {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
-                    string query = @"UPDATE AiubLink 
-                                     SET Name = @Name, Phone = @Phone, UserID = @UserID, Email = @Email, DOB = @DOB
-                                     WHERE Id = @Id";
+                    // Build the update query dynamically based on non-empty fields
+                    string query = "UPDATE AiubLink SET ";
+                    List<string> updates = new List<string>();
+                    SqlCommand command = new SqlCommand();
+
+                    if (!string.IsNullOrWhiteSpace(nametextBox.Text))
+                    {
+                        updates.Add("Name = @Name");
+                        command.Parameters.AddWithValue("@Name", nametextBox.Text.Trim());
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(phonetextBox.Text))
+                    {
+                        updates.Add("Phone = @Phone");
+                        command.Parameters.AddWithValue("@Phone", int.Parse(phonetextBox.Text.Trim()));
+                    }
+
+                    if (pictureBox1.Image != null)
+                    {
+                        updates.Add("Photo = @Photo");
+                        command.Parameters.Add("@Photo", SqlDbType.VarBinary).Value = GetPhotoData();
+                    }
+
+                    if (dateTimePicker1.Value != DateTime.MinValue)
+                    {
+                        updates.Add("DOB = @DOB");
+                        command.Parameters.AddWithValue("@DOB", dateTimePicker1.Value);
+                    }
+
+                    if (statusComboBox.SelectedItem != null)
+                    {
+                        updates.Add("Status = @Status");
+                        command.Parameters.AddWithValue("@Status", statusComboBox.SelectedItem.ToString());
+                    }
+
+                    if (updates.Count == 0)
+                    {
+                        MessageBox.Show("Please enter data in at least one field to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    query += string.Join(", ", updates) + " WHERE UserID = @UserID";
+                    command.Parameters.AddWithValue("@UserID", idtextBox.Text.Trim());
+                    command.CommandText = query;
+                    command.Connection = connection;
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Data updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SearchData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No data found for the given UserID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while updating data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        
+        }
+
+        private byte[] GetPhotoData()
+        {
+            // Convert photo from PictureBox into a byte array
+            if (pictureBox1.Image != null)
+            {
+                using (var ms = new System.IO.MemoryStream())
+                {
+                    pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    return ms.ToArray();
+                }
+            }
+            return null;
+        }
+
+        
+
+        private void InfoDashBoard_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'aiubLinkDataSet.AiubLink' table. You can move, or remove it, as needed.
+            this.aiubLinkTableAdapter.Fill(this.aiubLinkDataSet.AiubLink);
+            SearchData();
+            // TODO: This line of code loads data into the 'aiubLinkDataSet.AiubLink' table. You can move, or remove it, as needed.
+            this.aiubLinkTableAdapter.Fill(this.aiubLinkDataSet.AiubLink);
+        }
+
+        private void refreshbutton_Click(object sender, EventArgs e)
+        {
+            SearchData();
+
+        }
+
+        private void SearchData()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM AiubLink WHERE Role = @Role";
+                    if (!string.IsNullOrWhiteSpace(idtextBox.Text))
+                    {
+                        query += " AND UserID LIKE @UserID";
+                    }
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Name", nametextBox.Text);
-                        command.Parameters.AddWithValue("@Phone", phonetextBox.Text);
-                        command.Parameters.AddWithValue("@UserID", idtextBox.Text);
-                        command.Parameters.AddWithValue("@Email", emailtextBox.Text);
-                        command.Parameters.AddWithValue("@DOB", dateTimePicker1.Value);
-                        command.Parameters.AddWithValue("@Id", id);
+                        command.Parameters.AddWithValue("@Role", userRole); // Pass userRole as a parameter
 
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
+                        if (!string.IsNullOrWhiteSpace(idtextBox.Text))
                         {
-                            MessageBox.Show("Data updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadData(); // Refresh the DataGridView
+                            command.Parameters.AddWithValue("@UserID", "%" + idtextBox.Text.Trim() + "%");
                         }
-                        else
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        dataGridView.DataSource = dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while searching data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void uploadbutton_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Title = "Select a Photo";
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Display the selected image in the PictureBox
+                    pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
+
+                    // Optional: You can also store the file path if needed
+                    string selectedFilePath = openFileDialog.FileName;
+                }
+            }
+        }
+
+        private void deletebutton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(idtextBox.Text))
+            {
+                MessageBox.Show("Please enter the UserID to delete the data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Confirm the deletion with the user
+                    var result = MessageBox.Show("Are you sure you want to delete this data?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        string query = "DELETE FROM AiubLink WHERE UserID = @UserID";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
                         {
-                            MessageBox.Show("Update failed. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            command.Parameters.AddWithValue("@UserID", idtextBox.Text.Trim());
+
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Data deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                SearchData(); // Refresh the data to reflect the deletion
+                            }
+                            else
+                            {
+                                MessageBox.Show("No data found for the given UserID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
                     }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please select a row to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = dataGridView1.SelectedRows[0];
-                nametextBox.Text = row.Cells["Name"].Value.ToString();
-                phonetextBox.Text = row.Cells["PhoneNo"].Value.ToString();
-                idtextBox.Text = row.Cells["ID"].Value.ToString();
-                emailtextBox.Text = row.Cells["Email"].Value.ToString();
-                dateTimePicker1.Value = Convert.ToDateTime(row.Cells["DOB"].Value);
+                MessageBox.Show($"An error occurred while deleting data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
