@@ -69,6 +69,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AiubLinkDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="AssignmentRetrive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssignmentRetrive.Designer.cs">
+      <DependentUpon>AssignmentRetrive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssignmentUpload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssignmentUpload.Designer.cs">
+      <DependentUpon>AssignmentUpload.cs</DependentUpon>
+    </Compile>
     <Compile Include="CalenderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +149,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminMainPage.resx">
       <DependentUpon>AdminMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssignmentRetrive.resx">
+      <DependentUpon>AssignmentRetrive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssignmentUpload.resx">
+      <DependentUpon>AssignmentUpload.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CalenderForm.resx">
       <DependentUpon>CalenderForm.cs</DependentUpon>
