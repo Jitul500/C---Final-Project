@@ -37,13 +37,10 @@ namespace AiubLink
 
         private void exitbutton_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Are you sure you want to exit?", "Exit Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
                 AdminMainPage adminMainPage = new AdminMainPage();
                 adminMainPage.Show();
                 this.Hide(); 
-            }
+            
         }
 
         private void updatebutton_Click(object sender, EventArgs e)

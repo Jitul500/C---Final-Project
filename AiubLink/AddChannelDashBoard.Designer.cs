@@ -32,9 +32,8 @@
             this.ChannelnametextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Studentlabel2 = new System.Windows.Forms.Label();
-            this.TeachercomboBox2 = new System.Windows.Forms.ComboBox();
-            this.StudentcomboBox1 = new System.Windows.Forms.ComboBox();
-            this.okbutton2 = new System.Windows.Forms.Button();
+            this.FacultycomboBox = new System.Windows.Forms.ComboBox();
+            this.createbutton = new System.Windows.Forms.Button();
             this.ChanneldataGridView = new System.Windows.Forms.DataGridView();
             this.StudentPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,6 +41,7 @@
             this.exitbutton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.channelpanel = new System.Windows.Forms.Panel();
+            this.StudentCheckedListBox = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.ChanneldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -50,58 +50,54 @@
             // 
             // ChannelnametextBox
             // 
+            this.ChannelnametextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ChannelnametextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChannelnametextBox.Location = new System.Drawing.Point(345, 21);
+            this.ChannelnametextBox.Location = new System.Drawing.Point(256, 21);
             this.ChannelnametextBox.Name = "ChannelnametextBox";
-            this.ChannelnametextBox.Size = new System.Drawing.Size(450, 27);
+            this.ChannelnametextBox.Size = new System.Drawing.Size(416, 27);
             this.ChannelnametextBox.TabIndex = 17;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(545, 81);
+            this.label2.Location = new System.Drawing.Point(139, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 20);
+            this.label2.Size = new System.Drawing.Size(91, 20);
             this.label2.TabIndex = 15;
-            this.label2.Text = "TEACHER";
+            this.label2.Text = "FACULTY";
             // 
             // Studentlabel2
             // 
             this.Studentlabel2.AutoSize = true;
             this.Studentlabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Studentlabel2.Location = new System.Drawing.Point(149, 81);
+            this.Studentlabel2.Location = new System.Drawing.Point(694, 62);
             this.Studentlabel2.Name = "Studentlabel2";
-            this.Studentlabel2.Size = new System.Drawing.Size(95, 20);
+            this.Studentlabel2.Size = new System.Drawing.Size(107, 20);
             this.Studentlabel2.TabIndex = 14;
-            this.Studentlabel2.Text = "STUDENT";
+            this.Studentlabel2.Text = "STUDENTS";
             // 
-            // TeachercomboBox2
+            // FacultycomboBox
             // 
-            this.TeachercomboBox2.FormattingEnabled = true;
-            this.TeachercomboBox2.Location = new System.Drawing.Point(674, 77);
-            this.TeachercomboBox2.Name = "TeachercomboBox2";
-            this.TeachercomboBox2.Size = new System.Drawing.Size(225, 24);
-            this.TeachercomboBox2.TabIndex = 13;
+            this.FacultycomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FacultycomboBox.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FacultycomboBox.FormattingEnabled = true;
+            this.FacultycomboBox.Location = new System.Drawing.Point(256, 90);
+            this.FacultycomboBox.Name = "FacultycomboBox";
+            this.FacultycomboBox.Size = new System.Drawing.Size(240, 32);
+            this.FacultycomboBox.TabIndex = 13;
             // 
-            // StudentcomboBox1
+            // createbutton
             // 
-            this.StudentcomboBox1.FormattingEnabled = true;
-            this.StudentcomboBox1.Location = new System.Drawing.Point(274, 77);
-            this.StudentcomboBox1.Name = "StudentcomboBox1";
-            this.StudentcomboBox1.Size = new System.Drawing.Size(225, 24);
-            this.StudentcomboBox1.TabIndex = 12;
-            // 
-            // okbutton2
-            // 
-            this.okbutton2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.okbutton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.okbutton2.Location = new System.Drawing.Point(1065, 42);
-            this.okbutton2.Name = "okbutton2";
-            this.okbutton2.Size = new System.Drawing.Size(174, 58);
-            this.okbutton2.TabIndex = 11;
-            this.okbutton2.Text = "OK";
-            this.okbutton2.UseVisualStyleBackColor = false;
+            this.createbutton.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.createbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createbutton.Location = new System.Drawing.Point(1070, 24);
+            this.createbutton.Name = "createbutton";
+            this.createbutton.Size = new System.Drawing.Size(174, 58);
+            this.createbutton.TabIndex = 11;
+            this.createbutton.Text = "Create";
+            this.createbutton.UseVisualStyleBackColor = false;
+            this.createbutton.Click += new System.EventHandler(this.createbutton_Click);
             // 
             // ChanneldataGridView
             // 
@@ -137,9 +133,9 @@
             this.panel2.Controls.Add(this.StudentPanel);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.exitbutton);
-            this.panel2.Location = new System.Drawing.Point(0, -4);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1281, 109);
+            this.panel2.Size = new System.Drawing.Size(1281, 105);
             this.panel2.TabIndex = 21;
             // 
             // exitbutton
@@ -149,7 +145,7 @@
             this.exitbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.exitbutton.FlatAppearance.BorderSize = 0;
             this.exitbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitbutton.Location = new System.Drawing.Point(1234, 16);
+            this.exitbutton.Location = new System.Drawing.Point(1224, 24);
             this.exitbutton.Name = "exitbutton";
             this.exitbutton.Size = new System.Drawing.Size(44, 41);
             this.exitbutton.TabIndex = 4;
@@ -160,7 +156,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(149, 24);
+            this.label3.Location = new System.Drawing.Point(75, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(155, 20);
             this.label3.TabIndex = 16;
@@ -168,18 +164,28 @@
             // 
             // channelpanel
             // 
+            this.channelpanel.Controls.Add(this.StudentCheckedListBox);
             this.channelpanel.Controls.Add(this.ChannelnametextBox);
             this.channelpanel.Controls.Add(this.label3);
             this.channelpanel.Controls.Add(this.label2);
             this.channelpanel.Controls.Add(this.Studentlabel2);
-            this.channelpanel.Controls.Add(this.TeachercomboBox2);
-            this.channelpanel.Controls.Add(this.StudentcomboBox1);
-            this.channelpanel.Controls.Add(this.okbutton2);
+            this.channelpanel.Controls.Add(this.FacultycomboBox);
+            this.channelpanel.Controls.Add(this.createbutton);
             this.channelpanel.Controls.Add(this.ChanneldataGridView);
             this.channelpanel.Location = new System.Drawing.Point(0, 105);
             this.channelpanel.Name = "channelpanel";
             this.channelpanel.Size = new System.Drawing.Size(1278, 616);
             this.channelpanel.TabIndex = 22;
+            this.channelpanel.Paint += new System.Windows.Forms.PaintEventHandler(this.channelpanel_Paint);
+            // 
+            // StudentCheckedListBox
+            // 
+            this.StudentCheckedListBox.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentCheckedListBox.FormattingEnabled = true;
+            this.StudentCheckedListBox.Location = new System.Drawing.Point(816, 6);
+            this.StudentCheckedListBox.Name = "StudentCheckedListBox";
+            this.StudentCheckedListBox.Size = new System.Drawing.Size(176, 129);
+            this.StudentCheckedListBox.TabIndex = 18;
             // 
             // AddChannelDashBoard
             // 
@@ -193,6 +199,7 @@
             this.Name = "AddChannelDashBoard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddChannelDashBoard";
+            this.Load += new System.EventHandler(this.AddChannelDashBoard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ChanneldataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -207,9 +214,8 @@
         private System.Windows.Forms.TextBox ChannelnametextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Studentlabel2;
-        private System.Windows.Forms.ComboBox TeachercomboBox2;
-        private System.Windows.Forms.ComboBox StudentcomboBox1;
-        private System.Windows.Forms.Button okbutton2;
+        private System.Windows.Forms.ComboBox FacultycomboBox;
+        private System.Windows.Forms.Button createbutton;
         private System.Windows.Forms.DataGridView ChanneldataGridView;
         private System.Windows.Forms.Panel StudentPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -217,5 +223,6 @@
         private System.Windows.Forms.Button exitbutton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel channelpanel;
+        private System.Windows.Forms.CheckedListBox StudentCheckedListBox;
     }
 }

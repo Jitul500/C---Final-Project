@@ -67,12 +67,14 @@ namespace AiubLink
         {
             InfoDashBoard infoDashBoard = new InfoDashBoard("Student");
             infoDashBoard.Show();
+            this.Hide();
         }
 
         private void AdTeacherB_Click(object sender, EventArgs e)
         {
             InfoDashBoard infoDashBoard = new InfoDashBoard("Faculty");
             infoDashBoard.Show();
+            this.Hide();
 
         }
 
@@ -81,6 +83,7 @@ namespace AiubLink
             
             AddChannelDashBoard addChannelDashBoard = new AddChannelDashBoard();
             addChannelDashBoard.Show();
+            this.Hide();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

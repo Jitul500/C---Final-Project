@@ -53,7 +53,7 @@
             this.exitbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.exitbutton.FlatAppearance.BorderSize = 0;
             this.exitbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitbutton.Location = new System.Drawing.Point(1234, 3);
+            this.exitbutton.Location = new System.Drawing.Point(1223, 24);
             this.exitbutton.Name = "exitbutton";
             this.exitbutton.Size = new System.Drawing.Size(44, 41);
             this.exitbutton.TabIndex = 4;
@@ -164,7 +164,7 @@
             this.facnumlabel.Font = new System.Drawing.Font("Microsoft YaHei", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.facnumlabel.Location = new System.Drawing.Point(440, 365);
             this.facnumlabel.Name = "facnumlabel";
-            this.facnumlabel.Size = new System.Drawing.Size(52, 58);
+            this.facnumlabel.Size = new System.Drawing.Size(52, 57);
             this.facnumlabel.TabIndex = 9;
             this.facnumlabel.Text = "1";
             // 
@@ -174,7 +174,7 @@
             this.stnumlabel.Font = new System.Drawing.Font("Microsoft YaHei", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stnumlabel.Location = new System.Drawing.Point(917, 365);
             this.stnumlabel.Name = "stnumlabel";
-            this.stnumlabel.Size = new System.Drawing.Size(52, 58);
+            this.stnumlabel.Size = new System.Drawing.Size(52, 57);
             this.stnumlabel.TabIndex = 10;
             this.stnumlabel.Text = "1";
             // 
