@@ -35,5 +35,15 @@ namespace AiubLink
             calendarForm.Show();
             this.Hide();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Regbutton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

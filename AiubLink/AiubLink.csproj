@@ -84,6 +84,12 @@
     <Compile Include="CalenderForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="channels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="channels.Designer.cs">
+      <DependentUpon>channels.cs</DependentUpon>
+    </Compile>
     <Compile Include="FacultyMainPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     </Compile>
     <Compile Include="ForgetPage.Designer.cs">
       <DependentUpon>ForgetPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentMainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentMainPage.Designer.cs">
+      <DependentUpon>StudentMainPage.cs</DependentUpon>
     </Compile>
     <Compile Include="VideoConf.cs">
       <SubType>Form</SubType>
@@ -134,12 +146,6 @@
     <Compile Include="RegistrationPage.Designer.cs">
       <DependentUpon>RegistrationPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="StudentMainPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StudentMainPage.Designer.cs">
-      <DependentUpon>StudentMainPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserInfo.cs" />
     <EmbeddedResource Include="AddChannelDashBoard.resx">
       <DependentUpon>AddChannelDashBoard.cs</DependentUpon>
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CalenderForm.resx">
       <DependentUpon>CalenderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="channels.resx">
+      <DependentUpon>channels.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FacultyMainPage.resx">
       <DependentUpon>FacultyMainPage.cs</DependentUpon>
