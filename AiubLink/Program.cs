@@ -16,7 +16,7 @@ namespace AiubLink
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AssignmentUpload());
+            Application.Run(new LoadingPage());
         }
     }
 }

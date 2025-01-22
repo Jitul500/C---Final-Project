@@ -42,6 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.channelpanel = new System.Windows.Forms.Panel();
             this.StudentCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.refreshButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ChanneldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -89,9 +90,9 @@
             // 
             // createbutton
             // 
-            this.createbutton.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.createbutton.BackColor = System.Drawing.SystemColors.GrayText;
             this.createbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createbutton.Location = new System.Drawing.Point(1070, 24);
+            this.createbutton.Location = new System.Drawing.Point(1070, 21);
             this.createbutton.Name = "createbutton";
             this.createbutton.Size = new System.Drawing.Size(174, 58);
             this.createbutton.TabIndex = 11;
@@ -101,10 +102,13 @@
             // 
             // ChanneldataGridView
             // 
+            this.ChanneldataGridView.AllowUserToAddRows = false;
+            this.ChanneldataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ChanneldataGridView.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
             this.ChanneldataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ChanneldataGridView.Location = new System.Drawing.Point(3, 146);
             this.ChanneldataGridView.Name = "ChanneldataGridView";
+            this.ChanneldataGridView.ReadOnly = true;
             this.ChanneldataGridView.RowHeadersWidth = 51;
             this.ChanneldataGridView.RowTemplate.Height = 24;
             this.ChanneldataGridView.Size = new System.Drawing.Size(1275, 470);
@@ -164,6 +168,7 @@
             // 
             // channelpanel
             // 
+            this.channelpanel.Controls.Add(this.refreshButton);
             this.channelpanel.Controls.Add(this.StudentCheckedListBox);
             this.channelpanel.Controls.Add(this.ChannelnametextBox);
             this.channelpanel.Controls.Add(this.label3);
@@ -186,6 +191,18 @@
             this.StudentCheckedListBox.Name = "StudentCheckedListBox";
             this.StudentCheckedListBox.Size = new System.Drawing.Size(176, 129);
             this.StudentCheckedListBox.TabIndex = 18;
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.refreshButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshButton.Location = new System.Drawing.Point(1070, 82);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(174, 58);
+            this.refreshButton.TabIndex = 19;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = false;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // AddChannelDashBoard
             // 
@@ -224,5 +241,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel channelpanel;
         private System.Windows.Forms.CheckedListBox StudentCheckedListBox;
+        private System.Windows.Forms.Button refreshButton;
     }
 }

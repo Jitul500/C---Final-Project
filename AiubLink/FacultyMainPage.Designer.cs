@@ -29,61 +29,276 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacultyMainPage));
-            this.label1 = new System.Windows.Forms.Label();
-            this.backbutton = new System.Windows.Forms.Button();
-            this.exitbutton = new System.Windows.Forms.Button();
+            this.profilepictureBox = new System.Windows.Forms.PictureBox();
+            this.doblabel = new System.Windows.Forms.Label();
+            this.emaillabel = new System.Windows.Forms.Label();
+            this.facultyidlabel = new System.Windows.Forms.Label();
+            this.phonelabel = new System.Windows.Forms.Label();
+            this.namelabel = new System.Windows.Forms.Label();
+            this.dblabel = new System.Windows.Forms.Label();
+            this.pilabel = new System.Windows.Forms.Label();
+            this.elabel = new System.Windows.Forms.Label();
+            this.sidlabel = new System.Windows.Forms.Label();
+            this.plabel = new System.Windows.Forms.Label();
+            this.nlabel = new System.Windows.Forms.Label();
+            this.INFObutton = new System.Windows.Forms.Button();
+            this.Channelbutton = new System.Windows.Forms.Button();
+            this.Regbutton = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.calenderbutton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.exitbutton = new System.Windows.Forms.Button();
+            this.infopanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Backbutton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.profilepictureBox)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.infopanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // profilepictureBox
+            // 
+            this.profilepictureBox.Location = new System.Drawing.Point(259, 60);
+            this.profilepictureBox.Name = "profilepictureBox";
+            this.profilepictureBox.Size = new System.Drawing.Size(148, 130);
+            this.profilepictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilepictureBox.TabIndex = 11;
+            this.profilepictureBox.TabStop = false;
+            this.profilepictureBox.Click += new System.EventHandler(this.profilepictureBox_Click);
+            // 
+            // doblabel
+            // 
+            this.doblabel.AutoSize = true;
+            this.doblabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F);
+            this.doblabel.Location = new System.Drawing.Point(656, 434);
+            this.doblabel.Name = "doblabel";
+            this.doblabel.Size = new System.Drawing.Size(67, 31);
+            this.doblabel.TabIndex = 10;
+            this.doblabel.Text = "dob";
+            // 
+            // emaillabel
+            // 
+            this.emaillabel.AutoSize = true;
+            this.emaillabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F);
+            this.emaillabel.Location = new System.Drawing.Point(656, 272);
+            this.emaillabel.Name = "emaillabel";
+            this.emaillabel.Size = new System.Drawing.Size(92, 31);
+            this.emaillabel.TabIndex = 9;
+            this.emaillabel.Text = "email";
+            // 
+            // facultyidlabel
+            // 
+            this.facultyidlabel.AutoSize = true;
+            this.facultyidlabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F);
+            this.facultyidlabel.Location = new System.Drawing.Point(708, 188);
+            this.facultyidlabel.Name = "facultyidlabel";
+            this.facultyidlabel.Size = new System.Drawing.Size(86, 31);
+            this.facultyidlabel.TabIndex = 8;
+            this.facultyidlabel.Text = "stdid";
+            // 
+            // phonelabel
+            // 
+            this.phonelabel.AutoSize = true;
+            this.phonelabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F);
+            this.phonelabel.Location = new System.Drawing.Point(708, 356);
+            this.phonelabel.Name = "phonelabel";
+            this.phonelabel.Size = new System.Drawing.Size(101, 31);
+            this.phonelabel.TabIndex = 7;
+            this.phonelabel.Text = "phone";
+            // 
+            // namelabel
+            // 
+            this.namelabel.AutoSize = true;
+            this.namelabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F);
+            this.namelabel.Location = new System.Drawing.Point(665, 106);
+            this.namelabel.Name = "namelabel";
+            this.namelabel.Size = new System.Drawing.Size(102, 31);
+            this.namelabel.TabIndex = 6;
+            this.namelabel.Text = "Name ";
+            // 
+            // dblabel
+            // 
+            this.dblabel.AutoSize = true;
+            this.dblabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dblabel.Location = new System.Drawing.Point(557, 434);
+            this.dblabel.Name = "dblabel";
+            this.dblabel.Size = new System.Drawing.Size(78, 27);
+            this.dblabel.TabIndex = 5;
+            this.dblabel.Text = "DOB : ";
+            // 
+            // pilabel
+            // 
+            this.pilabel.AutoSize = true;
+            this.pilabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pilabel.Location = new System.Drawing.Point(85, 106);
+            this.pilabel.Name = "pilabel";
+            this.pilabel.Size = new System.Drawing.Size(168, 27);
+            this.pilabel.TabIndex = 4;
+            this.pilabel.Text = "Profile Photo : ";
+            // 
+            // elabel
+            // 
+            this.elabel.AutoSize = true;
+            this.elabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.elabel.Location = new System.Drawing.Point(553, 272);
+            this.elabel.Name = "elabel";
+            this.elabel.Size = new System.Drawing.Size(91, 27);
+            this.elabel.TabIndex = 3;
+            this.elabel.Text = "Email : ";
+            // 
+            // sidlabel
+            // 
+            this.sidlabel.AutoSize = true;
+            this.sidlabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sidlabel.Location = new System.Drawing.Point(554, 188);
+            this.sidlabel.Name = "sidlabel";
+            this.sidlabel.Size = new System.Drawing.Size(139, 27);
+            this.sidlabel.TabIndex = 2;
+            this.sidlabel.Text = "Faculty ID : ";
+            this.sidlabel.Click += new System.EventHandler(this.sidlabel_Click);
+            // 
+            // plabel
+            // 
+            this.plabel.AutoSize = true;
+            this.plabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.plabel.Location = new System.Drawing.Point(554, 358);
+            this.plabel.Name = "plabel";
+            this.plabel.Size = new System.Drawing.Size(139, 27);
+            this.plabel.TabIndex = 1;
+            this.plabel.Text = "Phone No : ";
+            // 
+            // nlabel
+            // 
+            this.nlabel.AutoSize = true;
+            this.nlabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nlabel.Location = new System.Drawing.Point(551, 106);
+            this.nlabel.Name = "nlabel";
+            this.nlabel.Size = new System.Drawing.Size(99, 27);
+            this.nlabel.TabIndex = 0;
+            this.nlabel.Text = "Name : ";
+            // 
+            // INFObutton
+            // 
+            this.INFObutton.Location = new System.Drawing.Point(45, 28);
+            this.INFObutton.Name = "INFObutton";
+            this.INFObutton.Size = new System.Drawing.Size(134, 53);
+            this.INFObutton.TabIndex = 10;
+            this.INFObutton.Text = "Info";
+            this.INFObutton.UseVisualStyleBackColor = true;
+            this.INFObutton.Click += new System.EventHandler(this.INFObutton_Click);
+            // 
+            // Channelbutton
+            // 
+            this.Channelbutton.Location = new System.Drawing.Point(45, 106);
+            this.Channelbutton.Name = "Channelbutton";
+            this.Channelbutton.Size = new System.Drawing.Size(134, 53);
+            this.Channelbutton.TabIndex = 9;
+            this.Channelbutton.Text = "Channels";
+            this.Channelbutton.UseVisualStyleBackColor = true;
+            this.Channelbutton.Click += new System.EventHandler(this.Channelbutton_Click);
+            // 
+            // Regbutton
+            // 
+            this.Regbutton.Location = new System.Drawing.Point(45, 188);
+            this.Regbutton.Name = "Regbutton";
+            this.Regbutton.Size = new System.Drawing.Size(134, 53);
+            this.Regbutton.TabIndex = 8;
+            this.Regbutton.Text = "Registration";
+            this.Regbutton.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Orange;
+            this.panel2.Controls.Add(this.INFObutton);
+            this.panel2.Controls.Add(this.Channelbutton);
+            this.panel2.Controls.Add(this.Regbutton);
+            this.panel2.Controls.Add(this.calenderbutton);
+            this.panel2.Location = new System.Drawing.Point(-19, 68);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(215, 660);
+            this.panel2.TabIndex = 10;
+            // 
+            // calenderbutton
+            // 
+            this.calenderbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calenderbutton.Location = new System.Drawing.Point(45, 272);
+            this.calenderbutton.Name = "calenderbutton";
+            this.calenderbutton.Size = new System.Drawing.Size(134, 50);
+            this.calenderbutton.TabIndex = 5;
+            this.calenderbutton.Text = "Calender";
+            this.calenderbutton.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(431, 292);
+            this.label1.Location = new System.Drawing.Point(440, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(397, 54);
+            this.label1.Size = new System.Drawing.Size(417, 54);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Faculty MainPage";
-            // 
-            // backbutton
-            // 
-            this.backbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
-            this.backbutton.FlatAppearance.BorderSize = 0;
-            this.backbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backbutton.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold);
-            this.backbutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.backbutton.Location = new System.Drawing.Point(0, 12);
-            this.backbutton.Name = "backbutton";
-            this.backbutton.Size = new System.Drawing.Size(110, 37);
-            this.backbutton.TabIndex = 2;
-            this.backbutton.Text = "← Back";
-            this.backbutton.UseVisualStyleBackColor = false;
-            this.backbutton.Click += new System.EventHandler(this.backbutton_Click);
+            this.label1.Text = "Faculty Dashboard";
             // 
             // exitbutton
             // 
-            this.exitbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.exitbutton.BackColor = System.Drawing.SystemColors.ControlDark;
             this.exitbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("exitbutton.BackgroundImage")));
             this.exitbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.exitbutton.FlatAppearance.BorderSize = 0;
             this.exitbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitbutton.Location = new System.Drawing.Point(1233, 8);
+            this.exitbutton.Location = new System.Drawing.Point(1233, 16);
             this.exitbutton.Name = "exitbutton";
             this.exitbutton.Size = new System.Drawing.Size(44, 41);
-            this.exitbutton.TabIndex = 3;
+            this.exitbutton.TabIndex = 4;
             this.exitbutton.UseVisualStyleBackColor = false;
             this.exitbutton.Click += new System.EventHandler(this.exitbutton_Click);
             // 
-            // calenderbutton
+            // infopanel
             // 
-            this.calenderbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calenderbutton.Location = new System.Drawing.Point(1160, 644);
-            this.calenderbutton.Name = "calenderbutton";
-            this.calenderbutton.Size = new System.Drawing.Size(117, 73);
-            this.calenderbutton.TabIndex = 4;
-            this.calenderbutton.Text = "Calender";
-            this.calenderbutton.UseVisualStyleBackColor = true;
-            this.calenderbutton.Click += new System.EventHandler(this.calenderbutton_Click);
+            this.infopanel.Controls.Add(this.profilepictureBox);
+            this.infopanel.Controls.Add(this.doblabel);
+            this.infopanel.Controls.Add(this.emaillabel);
+            this.infopanel.Controls.Add(this.facultyidlabel);
+            this.infopanel.Controls.Add(this.phonelabel);
+            this.infopanel.Controls.Add(this.namelabel);
+            this.infopanel.Controls.Add(this.dblabel);
+            this.infopanel.Controls.Add(this.pilabel);
+            this.infopanel.Controls.Add(this.elabel);
+            this.infopanel.Controls.Add(this.sidlabel);
+            this.infopanel.Controls.Add(this.plabel);
+            this.infopanel.Controls.Add(this.nlabel);
+            this.infopanel.Location = new System.Drawing.Point(193, 68);
+            this.infopanel.Name = "infopanel";
+            this.infopanel.Size = new System.Drawing.Size(1090, 649);
+            this.infopanel.TabIndex = 11;
+            this.infopanel.Paint += new System.Windows.Forms.PaintEventHandler(this.infopanel_Paint);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.Backbutton);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.exitbutton);
+            this.panel1.Location = new System.Drawing.Point(-4, -7);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1304, 75);
+            this.panel1.TabIndex = 9;
+            // 
+            // Backbutton
+            // 
+            this.Backbutton.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Backbutton.FlatAppearance.BorderSize = 0;
+            this.Backbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Backbutton.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Backbutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Backbutton.Location = new System.Drawing.Point(16, 19);
+            this.Backbutton.Name = "Backbutton";
+            this.Backbutton.Size = new System.Drawing.Size(110, 37);
+            this.Backbutton.TabIndex = 5;
+            this.Backbutton.Text = "← Back";
+            this.Backbutton.UseVisualStyleBackColor = false;
+            this.Backbutton.Click += new System.EventHandler(this.Backbutton_Click);
             // 
             // FacultyMainPage
             // 
@@ -91,25 +306,48 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.calenderbutton);
-            this.Controls.Add(this.exitbutton);
-            this.Controls.Add(this.backbutton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.infopanel);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FacultyMainPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FacultyMainPage";
+            this.Load += new System.EventHandler(this.FacultyMainPage_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.profilepictureBox)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.infopanel.ResumeLayout(false);
+            this.infopanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button backbutton;
-        private System.Windows.Forms.Button exitbutton;
+        private System.Windows.Forms.PictureBox profilepictureBox;
+        private System.Windows.Forms.Label doblabel;
+        private System.Windows.Forms.Label emaillabel;
+        private System.Windows.Forms.Label facultyidlabel;
+        private System.Windows.Forms.Label phonelabel;
+        private System.Windows.Forms.Label namelabel;
+        private System.Windows.Forms.Label dblabel;
+        private System.Windows.Forms.Label pilabel;
+        private System.Windows.Forms.Label elabel;
+        private System.Windows.Forms.Label sidlabel;
+        private System.Windows.Forms.Label plabel;
+        private System.Windows.Forms.Label nlabel;
+        private System.Windows.Forms.Button INFObutton;
+        private System.Windows.Forms.Button Channelbutton;
+        private System.Windows.Forms.Button Regbutton;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button calenderbutton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button exitbutton;
+        private System.Windows.Forms.Panel infopanel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button Backbutton;
     }
 }

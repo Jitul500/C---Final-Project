@@ -130,7 +130,7 @@ namespace AiubLink
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
 
             // SQL query to check if UserID and Password match
-            string query = "SELECT Role, Status FROM AiubLink WHERE UserID = @UserID AND Password = @Password";
+            string query = "SELECT Role, Status, UserID FROM AiubLink WHERE UserID = @UserID AND Password = @Password";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -149,19 +149,20 @@ namespace AiubLink
                             {
                                 string role = reader["Role"].ToString();
                                 string status = reader["Status"].ToString();
+                                string loggedInUserID = reader["UserID"].ToString();
 
                                 if (status == "Registered")
                                 {
                                     // Redirect to the respective page based on the role
                                     if (role == "Student")
                                     {
-                                        StudentMainPage studentMainPage = new StudentMainPage();
+                                        StudentMainPage studentMainPage = new StudentMainPage(loggedInUserID);
                                         studentMainPage.Show();
                                         this.Hide();
                                     }
                                     else if (role == "Faculty")
                                     {
-                                        FacultyMainPage facultyMainPage = new FacultyMainPage();
+                                        FacultyMainPage facultyMainPage = new FacultyMainPage(loggedInUserID);
                                         facultyMainPage.Show();
                                         this.Hide();
                                     }
@@ -193,6 +194,13 @@ namespace AiubLink
                                  
                
             }
+        }
+
+        private void gamebutton_Click(object sender, EventArgs e)
+        {
+            TicTacToe ticTacToe = new TicTacToe();
+            ticTacToe.Show();
+            this.Hide();
         }
     }
 }

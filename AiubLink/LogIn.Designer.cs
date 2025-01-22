@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogIn));
             this.Backbutton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.idtextbox = new System.Windows.Forms.TextBox();
             this.passtextbox = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.exitbutton = new System.Windows.Forms.Button();
@@ -43,7 +44,7 @@
             this.signintext = new System.Windows.Forms.Label();
             this.LoginText = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.idtextbox = new System.Windows.Forms.TextBox();
+            this.gamebutton = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +67,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(172)))), ((int)(((byte)(223)))));
+            this.panel2.Controls.Add(this.gamebutton);
             this.panel2.Controls.Add(this.idtextbox);
             this.panel2.Controls.Add(this.passtextbox);
             this.panel2.Controls.Add(this.checkBox1);
@@ -83,6 +85,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(737, 673);
             this.panel2.TabIndex = 3;
+            // 
+            // idtextbox
+            // 
+            this.idtextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(172)))), ((int)(((byte)(223)))));
+            this.idtextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.idtextbox.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F);
+            this.idtextbox.Location = new System.Drawing.Point(178, 240);
+            this.idtextbox.Name = "idtextbox";
+            this.idtextbox.Size = new System.Drawing.Size(388, 23);
+            this.idtextbox.TabIndex = 15;
+            this.idtextbox.Text = "Enter Your ID";
+            this.idtextbox.Enter += new System.EventHandler(this.idtextbox_Enter_1);
+            this.idtextbox.Leave += new System.EventHandler(this.idtextbox_Leave_1);
             // 
             // passtextbox
             // 
@@ -233,18 +248,21 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // idtextbox
+            // gamebutton
             // 
-            this.idtextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(172)))), ((int)(((byte)(223)))));
-            this.idtextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.idtextbox.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F);
-            this.idtextbox.Location = new System.Drawing.Point(178, 240);
-            this.idtextbox.Name = "idtextbox";
-            this.idtextbox.Size = new System.Drawing.Size(388, 23);
-            this.idtextbox.TabIndex = 15;
-            this.idtextbox.Text = "Enter Your ID";
-            this.idtextbox.Enter += new System.EventHandler(this.idtextbox_Enter_1);
-            this.idtextbox.Leave += new System.EventHandler(this.idtextbox_Leave_1);
+            this.gamebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(172)))), ((int)(((byte)(223)))));
+            this.gamebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.gamebutton.FlatAppearance.BorderSize = 0;
+            this.gamebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gamebutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gamebutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gamebutton.Location = new System.Drawing.Point(0, 617);
+            this.gamebutton.Name = "gamebutton";
+            this.gamebutton.Size = new System.Drawing.Size(251, 44);
+            this.gamebutton.TabIndex = 16;
+            this.gamebutton.Text = "Still Account Under Review?";
+            this.gamebutton.UseVisualStyleBackColor = false;
+            this.gamebutton.Click += new System.EventHandler(this.gamebutton_Click);
             // 
             // LogIn
             // 
@@ -284,5 +302,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox passtextbox;
         private System.Windows.Forms.TextBox idtextbox;
+        private System.Windows.Forms.Button gamebutton;
     }
 }

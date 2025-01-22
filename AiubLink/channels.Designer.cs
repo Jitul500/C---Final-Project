@@ -31,12 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(channels));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Channelslabel = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.Assigmentbutton = new System.Windows.Forms.Button();
             this.Sendbutton = new System.Windows.Forms.Button();
             this.Meetingbutton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.exitbutton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -45,9 +46,9 @@
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.ForestGreen;
             this.flowLayoutPanel1.Controls.Add(this.Channelslabel);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(-1, -3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(-1, -2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1286, 79);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1286, 80);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // Channelslabel
@@ -61,15 +62,15 @@
             this.Channelslabel.TabIndex = 0;
             this.Channelslabel.Text = "Channels";
             // 
-            // checkedListBox1
+            // checkedListBox
             // 
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(-1, 76);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(495, 644);
-            this.checkedListBox1.TabIndex = 3;
+            this.checkedListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedListBox.FormattingEnabled = true;
+            this.checkedListBox.Location = new System.Drawing.Point(-1, 76);
+            this.checkedListBox.Name = "checkedListBox";
+            this.checkedListBox.Size = new System.Drawing.Size(495, 644);
+            this.checkedListBox.TabIndex = 3;
             // 
             // Assigmentbutton
             // 
@@ -101,6 +102,7 @@
             this.Meetingbutton.TabIndex = 4;
             this.Meetingbutton.Text = "Meeting";
             this.Meetingbutton.UseVisualStyleBackColor = true;
+            this.Meetingbutton.Click += new System.EventHandler(this.Meetingbutton_Click);
             // 
             // textBox1
             // 
@@ -121,14 +123,29 @@
             this.panel1.Size = new System.Drawing.Size(785, 92);
             this.panel1.TabIndex = 7;
             // 
+            // exitbutton
+            // 
+            this.exitbutton.BackColor = System.Drawing.Color.ForestGreen;
+            this.exitbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("exitbutton.BackgroundImage")));
+            this.exitbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exitbutton.FlatAppearance.BorderSize = 0;
+            this.exitbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitbutton.Location = new System.Drawing.Point(1224, 12);
+            this.exitbutton.Name = "exitbutton";
+            this.exitbutton.Size = new System.Drawing.Size(44, 41);
+            this.exitbutton.TabIndex = 8;
+            this.exitbutton.UseVisualStyleBackColor = false;
+            this.exitbutton.Click += new System.EventHandler(this.exitbutton_Click);
+            // 
             // channels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.exitbutton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.checkedListBox);
             this.Controls.Add(this.Sendbutton);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -148,11 +165,12 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label Channelslabel;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox checkedListBox;
         private System.Windows.Forms.Button Assigmentbutton;
         private System.Windows.Forms.Button Sendbutton;
         private System.Windows.Forms.Button Meetingbutton;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button exitbutton;
     }
 }

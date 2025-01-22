@@ -115,6 +115,7 @@ namespace AiubLink
         {
             LoadStudentCheckedListBox();
             LoadFacultyComboBox();
+            LoadChannelData();
         }
 
         private void LoadStudentCheckedListBox()
@@ -145,6 +146,41 @@ namespace AiubLink
             }
         }
 
+        private void LoadChannelData()
+        {
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
+            string query = @"
+        SELECT 
+            Channels.ChannelID,
+            Channels.ChannelName,
+            Channels.FacultyID,
+            ChannelStudents.StudentID
+        FROM 
+            Channels
+        INNER JOIN 
+            ChannelStudents
+        ON 
+            Channels.ChannelID = ChannelStudents.ChannelID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        ChanneldataGridView.DataSource = dataTable;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading channel data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void LoadFacultyComboBox()
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
@@ -171,6 +207,11 @@ namespace AiubLink
                     MessageBox.Show("Error loading faculties: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            LoadChannelData();
         }
     }
 }
