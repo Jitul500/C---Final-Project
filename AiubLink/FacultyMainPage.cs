@@ -107,7 +107,7 @@ namespace AiubLink
 
         private void Channelbutton_Click(object sender, EventArgs e)
         {
-            channels channels = new channels(this);
+            channels channels = new channels(this, facultyUserID, "Faculty");
             channels.Show();
             this.Hide();
         }
