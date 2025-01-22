@@ -38,8 +38,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.exitbutton = new System.Windows.Forms.Button();
+            this.channelpanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.channelpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -86,7 +88,7 @@
             // 
             this.Sendbutton.BackColor = System.Drawing.Color.Orange;
             this.Sendbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Sendbutton.Location = new System.Drawing.Point(1117, 581);
+            this.Sendbutton.Location = new System.Drawing.Point(620, 505);
             this.Sendbutton.Name = "Sendbutton";
             this.Sendbutton.Size = new System.Drawing.Size(151, 40);
             this.Sendbutton.TabIndex = 5;
@@ -108,7 +110,7 @@
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(503, 581);
+            this.textBox1.Location = new System.Drawing.Point(6, 505);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(608, 41);
             this.textBox1.TabIndex = 6;
@@ -118,7 +120,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.Controls.Add(this.Meetingbutton);
             this.panel1.Controls.Add(this.Assigmentbutton);
-            this.panel1.Location = new System.Drawing.Point(500, 628);
+            this.panel1.Location = new System.Drawing.Point(3, 552);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(785, 92);
             this.panel1.TabIndex = 7;
@@ -137,16 +139,24 @@
             this.exitbutton.UseVisualStyleBackColor = false;
             this.exitbutton.Click += new System.EventHandler(this.exitbutton_Click);
             // 
+            // channelpanel
+            // 
+            this.channelpanel.Controls.Add(this.panel1);
+            this.channelpanel.Controls.Add(this.Sendbutton);
+            this.channelpanel.Controls.Add(this.textBox1);
+            this.channelpanel.Location = new System.Drawing.Point(491, 76);
+            this.channelpanel.Name = "channelpanel";
+            this.channelpanel.Size = new System.Drawing.Size(794, 644);
+            this.channelpanel.TabIndex = 9;
+            // 
             // channels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.channelpanel);
             this.Controls.Add(this.exitbutton);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.checkedListBox);
-            this.Controls.Add(this.Sendbutton);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -156,8 +166,9 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.channelpanel.ResumeLayout(false);
+            this.channelpanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -172,5 +183,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button exitbutton;
+        private System.Windows.Forms.Panel channelpanel;
     }
 }
