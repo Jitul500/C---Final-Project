@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoogleMeetApp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,7 +38,7 @@ namespace AiubLink
 
         private void Meetingbutton_Click(object sender, EventArgs e)
         {
-            VideoConference videoConf = new VideoConference(this);
+            VideoConf videoConf = new VideoConf(this);
             videoConf.Show();
             this.Hide();
         }

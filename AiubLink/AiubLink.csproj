@@ -157,11 +157,11 @@
       <DependentUpon>TicTacToe.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInfo.cs" />
-    <Compile Include="VideoConference.cs">
+    <Compile Include="VideoConf.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VideoConference.Designer.cs">
-      <DependentUpon>VideoConference.cs</DependentUpon>
+    <Compile Include="VideoConf.Designer.cs">
+      <DependentUpon>VideoConf.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddChannelDashBoard.resx">
       <DependentUpon>AddChannelDashBoard.cs</DependentUpon>
@@ -224,8 +224,8 @@
     <EmbeddedResource Include="TicTacToe.resx">
       <DependentUpon>TicTacToe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VideoConference.resx">
-      <DependentUpon>VideoConference.cs</DependentUpon>
+    <EmbeddedResource Include="VideoConf.resx">
+      <DependentUpon>VideoConf.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AiubLinkDataSet.xsc">
       <DependentUpon>AiubLinkDataSet.xsd</DependentUpon>
