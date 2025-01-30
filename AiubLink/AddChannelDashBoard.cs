@@ -13,6 +13,7 @@ namespace AiubLink
 {
     public partial class AddChannelDashBoard : Form
     {
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
         public AddChannelDashBoard()
         {
             InitializeComponent();
@@ -116,6 +117,8 @@ namespace AiubLink
             LoadStudentCheckedListBox();
             LoadFacultyComboBox();
             LoadChannelData();
+            LoadCoursesComboBox();
+            coursecomboBox.SelectedIndexChanged += coursecomboBox_SelectedIndexChanged;
         }
 
         private void LoadStudentCheckedListBox()
@@ -148,7 +151,7 @@ namespace AiubLink
 
         private void LoadChannelData()
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
+            
             string query = @"
         SELECT 
             Channels.ChannelID,
@@ -181,6 +184,34 @@ namespace AiubLink
             }
         }
 
+        private void LoadCoursesComboBox()
+        {
+            string query = "SELECT CourseName FROM Courses";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            coursecomboBox.Items.Clear();
+                            while (reader.Read())
+                            {
+                                coursecomboBox.Items.Add(reader["CourseName"].ToString());
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading courses: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
         private void LoadFacultyComboBox()
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
@@ -212,6 +243,53 @@ namespace AiubLink
         private void refreshButton_Click(object sender, EventArgs e)
         {
             LoadChannelData();
+        }
+
+        private void coursecomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedCourse = coursecomboBox.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(selectedCourse))
+            {
+                MessageBox.Show("Please select a course.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            ShowRegisteredStudents(selectedCourse);
+        }
+
+        private void ShowRegisteredStudents(string courseName)
+        {
+            string query = @"
+        SELECT DISTINCT a.UserID 
+        FROM Registrations r 
+        INNER JOIN Courses c ON r.CourseID = c.CourseID
+        INNER JOIN AiubLink a ON r.SerialNo = a.UserID
+        WHERE c.CourseName = @courseName AND a.Role = 'Student'";
+
+            StudentCheckedListBox.Items.Clear();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@courseName", courseName);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                StudentCheckedListBox.Items.Add(reader["UserID"].ToString());
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading registered students: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

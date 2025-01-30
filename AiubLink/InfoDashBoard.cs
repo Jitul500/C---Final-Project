@@ -159,7 +159,7 @@ namespace AiubLink
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM AiubLink WHERE Role = @Role";
+                    string query = "SELECT * FROM AiubLink WHERE Role = @Role AND Status = @Status";
                     if (!string.IsNullOrWhiteSpace(idtextBox.Text))
                     {
                         query += " AND UserID LIKE @UserID";
@@ -167,7 +167,8 @@ namespace AiubLink
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Role", userRole); // Pass userRole as a parameter
+                        command.Parameters.AddWithValue("@Role", userRole);
+                        command.Parameters.AddWithValue("@Status", "Registered");
 
                         if (!string.IsNullOrWhiteSpace(idtextBox.Text))
                         {
@@ -187,6 +188,7 @@ namespace AiubLink
                 MessageBox.Show($"An error occurred while searching data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void uploadbutton_Click(object sender, EventArgs e)
         {

@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMainPage));
             this.exitbutton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnstudentunrev = new System.Windows.Forms.Button();
+            this.btnteacherunrev = new System.Windows.Forms.Button();
             this.AdADDchannelB = new System.Windows.Forms.Button();
             this.AdTeacherB = new System.Windows.Forms.Button();
             this.AdStudentB = new System.Windows.Forms.Button();
@@ -42,12 +44,12 @@
             this.facnumlabel = new System.Windows.Forms.Label();
             this.stnumlabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.stnum2label = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.facnum2label = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.facnum2label = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.stnum2label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,7 +59,7 @@
             // 
             // exitbutton
             // 
-            this.exitbutton.BackColor = System.Drawing.Color.SteelBlue;
+            this.exitbutton.BackColor = System.Drawing.Color.YellowGreen;
             this.exitbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("exitbutton.BackgroundImage")));
             this.exitbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.exitbutton.FlatAppearance.BorderSize = 0;
@@ -71,22 +73,46 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel1.Controls.Add(this.btnstudentunrev);
+            this.panel1.Controls.Add(this.btnteacherunrev);
             this.panel1.Controls.Add(this.AdADDchannelB);
             this.panel1.Controls.Add(this.AdTeacherB);
             this.panel1.Controls.Add(this.AdStudentB);
             this.panel1.Location = new System.Drawing.Point(1, -4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(149, 734);
+            this.panel1.Size = new System.Drawing.Size(212, 734);
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnstudentunrev
+            // 
+            this.btnstudentunrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnstudentunrev.Location = new System.Drawing.Point(11, 368);
+            this.btnstudentunrev.Name = "btnstudentunrev";
+            this.btnstudentunrev.Size = new System.Drawing.Size(180, 80);
+            this.btnstudentunrev.TabIndex = 10;
+            this.btnstudentunrev.Text = "STUDENT UDER REVIEW";
+            this.btnstudentunrev.UseVisualStyleBackColor = true;
+            this.btnstudentunrev.Click += new System.EventHandler(this.btnstudentunrev_Click);
+            // 
+            // btnteacherunrev
+            // 
+            this.btnteacherunrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnteacherunrev.Location = new System.Drawing.Point(11, 282);
+            this.btnteacherunrev.Name = "btnteacherunrev";
+            this.btnteacherunrev.Size = new System.Drawing.Size(180, 80);
+            this.btnteacherunrev.TabIndex = 9;
+            this.btnteacherunrev.Text = "FACULTY UDER REVIEW";
+            this.btnteacherunrev.UseVisualStyleBackColor = true;
+            this.btnteacherunrev.Click += new System.EventHandler(this.btnteacherunrev_Click);
             // 
             // AdADDchannelB
             // 
             this.AdADDchannelB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdADDchannelB.Location = new System.Drawing.Point(11, 310);
+            this.AdADDchannelB.Location = new System.Drawing.Point(11, 230);
             this.AdADDchannelB.Name = "AdADDchannelB";
-            this.AdADDchannelB.Size = new System.Drawing.Size(125, 58);
+            this.AdADDchannelB.Size = new System.Drawing.Size(180, 46);
             this.AdADDchannelB.TabIndex = 8;
             this.AdADDchannelB.Text = "ADD CHANNEL";
             this.AdADDchannelB.UseVisualStyleBackColor = true;
@@ -95,11 +121,11 @@
             // AdTeacherB
             // 
             this.AdTeacherB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdTeacherB.Location = new System.Drawing.Point(11, 256);
+            this.AdTeacherB.Location = new System.Drawing.Point(11, 185);
             this.AdTeacherB.Name = "AdTeacherB";
-            this.AdTeacherB.Size = new System.Drawing.Size(125, 39);
+            this.AdTeacherB.Size = new System.Drawing.Size(180, 39);
             this.AdTeacherB.TabIndex = 7;
-            this.AdTeacherB.Text = "TEACHER";
+            this.AdTeacherB.Text = "FACULTY";
             this.AdTeacherB.UseVisualStyleBackColor = true;
             this.AdTeacherB.Click += new System.EventHandler(this.AdTeacherB_Click);
             // 
@@ -107,9 +133,9 @@
             // 
             this.AdStudentB.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.AdStudentB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdStudentB.Location = new System.Drawing.Point(11, 199);
+            this.AdStudentB.Location = new System.Drawing.Point(11, 129);
             this.AdStudentB.Name = "AdStudentB";
-            this.AdStudentB.Size = new System.Drawing.Size(125, 41);
+            this.AdStudentB.Size = new System.Drawing.Size(180, 41);
             this.AdStudentB.TabIndex = 6;
             this.AdStudentB.Text = "STUDENT";
             this.AdStudentB.UseVisualStyleBackColor = false;
@@ -117,7 +143,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.BackColor = System.Drawing.Color.YellowGreen;
             this.panel2.Controls.Add(this.StudentPanel);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.exitbutton);
@@ -208,45 +234,16 @@
             this.panel3.Size = new System.Drawing.Size(882, 270);
             this.panel3.TabIndex = 11;
             // 
-            // pictureBox2
+            // stnum2label
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(149, 105);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1132, 623);
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel4.Location = new System.Drawing.Point(1, 609);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1281, 119);
-            this.panel4.TabIndex = 13;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.PowderBlue;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(77, 163);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(345, 23);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Total No of Faculties Under Review";
-            // 
-            // facnum2label
-            // 
-            this.facnum2label.AutoSize = true;
-            this.facnum2label.BackColor = System.Drawing.Color.PowderBlue;
-            this.facnum2label.Font = new System.Drawing.Font("Microsoft YaHei", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.facnum2label.Location = new System.Drawing.Point(181, 212);
-            this.facnum2label.Name = "facnum2label";
-            this.facnum2label.Size = new System.Drawing.Size(28, 31);
-            this.facnum2label.TabIndex = 12;
-            this.facnum2label.Text = "1";
+            this.stnum2label.AutoSize = true;
+            this.stnum2label.BackColor = System.Drawing.Color.PowderBlue;
+            this.stnum2label.Font = new System.Drawing.Font("Microsoft YaHei", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stnum2label.Location = new System.Drawing.Point(643, 212);
+            this.stnum2label.Name = "stnum2label";
+            this.stnum2label.Size = new System.Drawing.Size(28, 31);
+            this.stnum2label.TabIndex = 14;
+            this.stnum2label.Text = "1";
             // 
             // label3
             // 
@@ -260,16 +257,45 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Total No of Students Under Review";
             // 
-            // stnum2label
+            // facnum2label
             // 
-            this.stnum2label.AutoSize = true;
-            this.stnum2label.BackColor = System.Drawing.Color.PowderBlue;
-            this.stnum2label.Font = new System.Drawing.Font("Microsoft YaHei", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stnum2label.Location = new System.Drawing.Point(643, 212);
-            this.stnum2label.Name = "stnum2label";
-            this.stnum2label.Size = new System.Drawing.Size(28, 31);
-            this.stnum2label.TabIndex = 14;
-            this.stnum2label.Text = "1";
+            this.facnum2label.AutoSize = true;
+            this.facnum2label.BackColor = System.Drawing.Color.PowderBlue;
+            this.facnum2label.Font = new System.Drawing.Font("Microsoft YaHei", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.facnum2label.Location = new System.Drawing.Point(181, 212);
+            this.facnum2label.Name = "facnum2label";
+            this.facnum2label.Size = new System.Drawing.Size(28, 31);
+            this.facnum2label.TabIndex = 12;
+            this.facnum2label.Text = "1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.PowderBlue;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(77, 163);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(345, 23);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Total No of Faculties Under Review";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(210, 105);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1071, 623);
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.YellowGreen;
+            this.panel4.Location = new System.Drawing.Point(1, 609);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1281, 119);
+            this.panel4.TabIndex = 13;
             // 
             // AdminMainPage
             // 
@@ -318,5 +344,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label facnum2label;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnteacherunrev;
+        private System.Windows.Forms.Button btnstudentunrev;
     }
 }

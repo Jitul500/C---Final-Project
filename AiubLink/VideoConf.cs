@@ -41,15 +41,17 @@ namespace GoogleMeetApp
             }
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+       
         private void link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string meetLink = "https://meet.google.com/landing";
             Process.Start(new ProcessStartInfo(meetLink) { UseShellExecute = true });
+        }
+
+        private void exitbutton_Click(object sender, EventArgs e)
+        {
+            previousForm.Show();
+            this.Close();
         }
     }
 }

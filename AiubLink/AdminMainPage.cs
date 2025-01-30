@@ -17,6 +17,7 @@ namespace AiubLink
         public AdminMainPage()
         {
             InitializeComponent();
+            
         }
 
         private void exitbutton_Click(object sender, EventArgs e)
@@ -79,6 +80,12 @@ namespace AiubLink
             }
         }
 
+        public void UpdateCountsFromUnderReview()
+        {
+            UpdateCounts(); 
+        }
+
+
         private void AdStudentB_Click(object sender, EventArgs e)
         {
             InfoDashBoard infoDashBoard = new InfoDashBoard("Student");
@@ -122,5 +129,18 @@ namespace AiubLink
 
         }
 
+        private void btnteacherunrev_Click(object sender, EventArgs e)
+        {
+            UnderReview underReview = new UnderReview(this, "Faculty");
+            underReview.Show();
+            this.Hide();
+        }
+
+        private void btnstudentunrev_Click(object sender, EventArgs e)
+        {
+            UnderReview underReview = new UnderReview(this, "Student");
+            underReview.Show();
+            this.Hide();
+        }
     }
 }

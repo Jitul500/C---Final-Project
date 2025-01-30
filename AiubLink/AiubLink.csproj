@@ -156,6 +156,12 @@
     <Compile Include="TicTacToe.Designer.cs">
       <DependentUpon>TicTacToe.cs</DependentUpon>
     </Compile>
+    <Compile Include="UnderReview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnderReview.Designer.cs">
+      <DependentUpon>UnderReview.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInfo.cs" />
     <Compile Include="VideoConf.cs">
       <SubType>Form</SubType>
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TicTacToe.resx">
       <DependentUpon>TicTacToe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnderReview.resx">
+      <DependentUpon>UnderReview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VideoConf.resx">
       <DependentUpon>VideoConf.cs</DependentUpon>

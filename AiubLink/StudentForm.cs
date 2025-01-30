@@ -10,7 +10,7 @@ namespace UniversityRegistrationSystem
     {
         private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
         private Form previousForm;
-        private int serialNo;
+        private string serialNo;
         private string studentID;
         private string studentName;
         private int currentSemester;
@@ -56,7 +56,7 @@ namespace UniversityRegistrationSystem
                             string name = reader["Name"].ToString();
                             txtStudentID.Text = userID;
                             txtStudentName.Text = name;
-                            serialNo = GenerateSerialNo(userID);
+                            serialNo = userID;
                         }
                         else
                         {
@@ -68,10 +68,7 @@ namespace UniversityRegistrationSystem
             }
         }
 
-        private int GenerateSerialNo(string userID)
-        {
-            return Math.Abs(userID.GetHashCode()) % int.MaxValue;
-        }
+        
 
         private void InitializeSemester()
         {
@@ -139,11 +136,11 @@ namespace UniversityRegistrationSystem
             {
                 con.Open();
                 string query = @"SELECT s.SemesterNumber, c.CourseName 
-                                 FROM Registrations r
-                                 INNER JOIN Courses c ON r.CourseID = c.CourseID
-                                 INNER JOIN Semesters s ON r.SemesterID = s.SemesterID
-                                 WHERE r.SerialNo = @serialNo
-                                 ORDER BY s.SemesterNumber";
+                 FROM Registrations r
+                 INNER JOIN Courses c ON r.CourseID = c.CourseID
+                 INNER JOIN Semesters s ON r.SemesterID = s.SemesterID
+                 WHERE r.SerialNo = @serialNo
+                 ORDER BY s.SemesterNumber";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@serialNo", serialNo);
@@ -181,7 +178,7 @@ namespace UniversityRegistrationSystem
 
             if (selectedCoursesCount < 4 || selectedCoursesCount > 6)
             {
-                MessageBox.Show("Please select between 4 and 6 courses to register.");
+                MessageBox.Show("Please select between 4 and 6 courses to register.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

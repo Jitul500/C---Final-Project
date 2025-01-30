@@ -41,8 +41,10 @@
             this.exitbutton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.channelpanel = new System.Windows.Forms.Panel();
-            this.StudentCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.refreshButton = new System.Windows.Forms.Button();
+            this.StudentCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.coursecomboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ChanneldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -53,7 +55,7 @@
             // 
             this.ChannelnametextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ChannelnametextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChannelnametextBox.Location = new System.Drawing.Point(256, 21);
+            this.ChannelnametextBox.Location = new System.Drawing.Point(256, 17);
             this.ChannelnametextBox.Name = "ChannelnametextBox";
             this.ChannelnametextBox.Size = new System.Drawing.Size(416, 27);
             this.ChannelnametextBox.TabIndex = 17;
@@ -62,7 +64,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(139, 94);
+            this.label2.Location = new System.Drawing.Point(136, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 20);
             this.label2.TabIndex = 15;
@@ -83,7 +85,7 @@
             this.FacultycomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FacultycomboBox.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FacultycomboBox.FormattingEnabled = true;
-            this.FacultycomboBox.Location = new System.Drawing.Point(256, 90);
+            this.FacultycomboBox.Location = new System.Drawing.Point(256, 99);
             this.FacultycomboBox.Name = "FacultycomboBox";
             this.FacultycomboBox.Size = new System.Drawing.Size(240, 32);
             this.FacultycomboBox.TabIndex = 13;
@@ -139,7 +141,7 @@
             this.panel2.Controls.Add(this.exitbutton);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1281, 105);
+            this.panel2.Size = new System.Drawing.Size(1282, 105);
             this.panel2.TabIndex = 21;
             // 
             // exitbutton
@@ -160,7 +162,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(75, 24);
+            this.label3.Location = new System.Drawing.Point(72, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(155, 20);
             this.label3.TabIndex = 16;
@@ -168,6 +170,8 @@
             // 
             // channelpanel
             // 
+            this.channelpanel.Controls.Add(this.label1);
+            this.channelpanel.Controls.Add(this.coursecomboBox);
             this.channelpanel.Controls.Add(this.refreshButton);
             this.channelpanel.Controls.Add(this.StudentCheckedListBox);
             this.channelpanel.Controls.Add(this.ChannelnametextBox);
@@ -183,15 +187,6 @@
             this.channelpanel.TabIndex = 22;
             this.channelpanel.Paint += new System.Windows.Forms.PaintEventHandler(this.channelpanel_Paint);
             // 
-            // StudentCheckedListBox
-            // 
-            this.StudentCheckedListBox.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentCheckedListBox.FormattingEnabled = true;
-            this.StudentCheckedListBox.Location = new System.Drawing.Point(816, 6);
-            this.StudentCheckedListBox.Name = "StudentCheckedListBox";
-            this.StudentCheckedListBox.Size = new System.Drawing.Size(176, 129);
-            this.StudentCheckedListBox.TabIndex = 18;
-            // 
             // refreshButton
             // 
             this.refreshButton.BackColor = System.Drawing.SystemColors.ButtonShadow;
@@ -203,6 +198,35 @@
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = false;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
+            // StudentCheckedListBox
+            // 
+            this.StudentCheckedListBox.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentCheckedListBox.FormattingEnabled = true;
+            this.StudentCheckedListBox.Location = new System.Drawing.Point(816, 6);
+            this.StudentCheckedListBox.Name = "StudentCheckedListBox";
+            this.StudentCheckedListBox.Size = new System.Drawing.Size(176, 129);
+            this.StudentCheckedListBox.TabIndex = 18;
+            // 
+            // coursecomboBox
+            // 
+            this.coursecomboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coursecomboBox.FormattingEnabled = true;
+            this.coursecomboBox.Location = new System.Drawing.Point(256, 60);
+            this.coursecomboBox.Name = "coursecomboBox";
+            this.coursecomboBox.Size = new System.Drawing.Size(416, 28);
+            this.coursecomboBox.TabIndex = 20;
+            this.coursecomboBox.SelectedIndexChanged += new System.EventHandler(this.coursecomboBox_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(129, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "COURSES";
             // 
             // AddChannelDashBoard
             // 
@@ -242,5 +266,7 @@
         private System.Windows.Forms.Panel channelpanel;
         private System.Windows.Forms.CheckedListBox StudentCheckedListBox;
         private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.ComboBox coursecomboBox;
+        private System.Windows.Forms.Label label1;
     }
 }
