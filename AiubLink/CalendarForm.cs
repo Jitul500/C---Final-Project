@@ -112,5 +112,12 @@ namespace CalendarSystem
             previousForm.Show();
             this.Close();
         }
+
+        private void clearbutton_Click(object sender, EventArgs e)
+        {
+            txtReminder.Text = "";
+        }
+
+       
     }
 }
