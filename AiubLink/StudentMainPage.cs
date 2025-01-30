@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalendarSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UniversityRegistrationSystem;
 
 namespace AiubLink
 {
@@ -41,7 +43,9 @@ namespace AiubLink
 
         private void Regbutton_Click(object sender, EventArgs e)
         {
-
+            StudentForm studentForm = new StudentForm(this, studentUserID, namelabel.Text); // Passing StudentID and Name
+            studentForm.Show();
+            this.Hide();
         }
 
         private void INFObutton_Click(object sender, EventArgs e)

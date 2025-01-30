@@ -40,20 +40,36 @@ namespace AiubLink
                 {
                     connection.Open();
 
-                    // Query to count students
-                    string studentQuery = "SELECT COUNT(*) FROM AiubLink WHERE Role = 'Student'";
-                    using (SqlCommand studentCommand = new SqlCommand(studentQuery, connection))
+                    // Query to count registered students
+                    string studentRegisteredQuery = "SELECT COUNT(*) FROM AiubLink WHERE Role = 'Student' AND Status = 'Registered'";
+                    using (SqlCommand studentRegisteredCommand = new SqlCommand(studentRegisteredQuery, connection))
                     {
-                        int studentCount = (int)studentCommand.ExecuteScalar();
-                        stnumlabel.Text = studentCount.ToString(); // Set the count to the label
+                        int studentRegisteredCount = (int)studentRegisteredCommand.ExecuteScalar();
+                        stnumlabel.Text = studentRegisteredCount.ToString(); // Set the count to the label
                     }
 
-                    // Query to count faculties
-                    string facultyQuery = "SELECT COUNT(*) FROM AiubLink WHERE Role = 'Faculty'";
-                    using (SqlCommand facultyCommand = new SqlCommand(facultyQuery, connection))
+                    // Query to count pending students
+                    string studentPendingQuery = "SELECT COUNT(*) FROM AiubLink WHERE Role = 'Student' AND Status = 'Pending'";
+                    using (SqlCommand studentPendingCommand = new SqlCommand(studentPendingQuery, connection))
                     {
-                        int facultyCount = (int)facultyCommand.ExecuteScalar();
-                        facnumlabel.Text = facultyCount.ToString(); // Set the count to the label
+                        int studentPendingCount = (int)studentPendingCommand.ExecuteScalar();
+                        stnum2label.Text = studentPendingCount.ToString(); // Set the count to the label
+                    }
+
+                    // Query to count registered faculties
+                    string facultyRegisteredQuery = "SELECT COUNT(*) FROM AiubLink WHERE Role = 'Faculty' AND Status = 'Registered'";
+                    using (SqlCommand facultyRegisteredCommand = new SqlCommand(facultyRegisteredQuery, connection))
+                    {
+                        int facultyRegisteredCount = (int)facultyRegisteredCommand.ExecuteScalar();
+                        facnumlabel.Text = facultyRegisteredCount.ToString(); // Set the count to the label
+                    }
+
+                    // Query to count pending faculties
+                    string facultyPendingQuery = "SELECT COUNT(*) FROM AiubLink WHERE Role = 'Faculty' AND Status = 'Pending'";
+                    using (SqlCommand facultyPendingCommand = new SqlCommand(facultyPendingQuery, connection))
+                    {
+                        int facultyPendingCount = (int)facultyPendingCommand.ExecuteScalar();
+                        facnum2label.Text = facultyPendingCount.ToString(); // Set the count to the label
                     }
                 }
             }

@@ -54,17 +54,17 @@ namespace AiubLink
             if (role == "Student")
             {
                 query = @"
-                    SELECT c.ChannelName 
-                    FROM Channels c
-                    INNER JOIN ChannelStudents cs ON c.ChannelID = cs.ChannelID
-                    WHERE cs.StudentID = @UserID";
+            SELECT c.ChannelName 
+            FROM Channels c
+            INNER JOIN ChannelStudents cs ON c.ChannelID = cs.ChannelID
+            WHERE cs.StudentID = @UserID";
             }
             else if (role == "Faculty")
             {
                 query = @"
-                    SELECT ChannelName 
-                    FROM Channels 
-                    WHERE FacultyID = @UserID";
+            SELECT ChannelName 
+            FROM Channels 
+            WHERE FacultyID = @UserID";
             }
             else
             {
@@ -95,6 +95,89 @@ namespace AiubLink
                 catch (Exception ex)
                 {
                     MessageBox.Show("An error occurred while loading channels: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            // Subscribe to the ItemCheck event for single selection
+            checkedListBox.ItemCheck += checkedListBox_ItemCheck;
+        }
+
+        private void Assigmentbutton_Click(object sender, EventArgs e)
+        {
+            if (checkedListBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a channel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string selectedChannel = checkedListBox.SelectedItem.ToString();
+
+            if (role == "Faculty")
+            {
+                // Open the AssignmentRetrive form for faculty
+                AssignmentRetrive assignmentRetriveForm = new AssignmentRetrive(this);
+                assignmentRetriveForm.Show();
+                this.Hide();
+            }
+            else if (role == "Student")
+            {
+                // Check if there's an active assignment for the selected channel
+                if (HasActiveAssignment(selectedChannel))
+                {
+                    // Open the AssignmentUpload form for students
+                    AssignmentUpload assignmentUploadForm = new AssignmentUpload(this);
+                    assignmentUploadForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("No active assignment for this channel.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private bool HasActiveAssignment(string channelName)
+        {
+            bool hasAssignment = false;
+
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
+
+            string query = @"
+        SELECT COUNT(*) 
+        FROM Assignments 
+        INNER JOIN Channels ON Assignments.ChannelID = Channels.ChannelID
+        WHERE Channels.ChannelName = @ChannelName AND Assignments.IsActive = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ChannelName", channelName);
+
+                        int count = (int)command.ExecuteScalar();
+                        hasAssignment = count > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while checking for active assignments: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            return hasAssignment;
+        }
+
+        private void checkedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            // Uncheck all other items if a new one is checked
+            for (int i = 0; i < checkedListBox.Items.Count; i++)
+            {
+                if (i != e.Index) // Leave the current item as is (checked/unchecked)
+                {
+                    checkedListBox.SetItemChecked(i, false);
                 }
             }
         }

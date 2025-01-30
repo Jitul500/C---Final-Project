@@ -193,50 +193,50 @@
             // doblabel
             // 
             this.doblabel.AutoSize = true;
-            this.doblabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F);
+            this.doblabel.Font = new System.Drawing.Font("Century Schoolbook", 13.8F, System.Drawing.FontStyle.Bold);
             this.doblabel.Location = new System.Drawing.Point(645, 402);
             this.doblabel.Name = "doblabel";
-            this.doblabel.Size = new System.Drawing.Size(67, 31);
+            this.doblabel.Size = new System.Drawing.Size(56, 27);
             this.doblabel.TabIndex = 10;
             this.doblabel.Text = "dob";
             // 
             // emaillabel
             // 
             this.emaillabel.AutoSize = true;
-            this.emaillabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F);
+            this.emaillabel.Font = new System.Drawing.Font("Century Schoolbook", 13.8F, System.Drawing.FontStyle.Bold);
             this.emaillabel.Location = new System.Drawing.Point(651, 261);
             this.emaillabel.Name = "emaillabel";
-            this.emaillabel.Size = new System.Drawing.Size(92, 31);
+            this.emaillabel.Size = new System.Drawing.Size(78, 27);
             this.emaillabel.TabIndex = 9;
             this.emaillabel.Text = "email";
             // 
             // studentidlabel
             // 
             this.studentidlabel.AutoSize = true;
-            this.studentidlabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F);
+            this.studentidlabel.Font = new System.Drawing.Font("Century Schoolbook", 13.8F, System.Drawing.FontStyle.Bold);
             this.studentidlabel.Location = new System.Drawing.Point(702, 179);
             this.studentidlabel.Name = "studentidlabel";
-            this.studentidlabel.Size = new System.Drawing.Size(86, 31);
+            this.studentidlabel.Size = new System.Drawing.Size(73, 27);
             this.studentidlabel.TabIndex = 8;
             this.studentidlabel.Text = "stdid";
             // 
             // phonelabel
             // 
             this.phonelabel.AutoSize = true;
-            this.phonelabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F);
+            this.phonelabel.Font = new System.Drawing.Font("Century Schoolbook", 13.8F, System.Drawing.FontStyle.Bold);
             this.phonelabel.Location = new System.Drawing.Point(702, 328);
             this.phonelabel.Name = "phonelabel";
-            this.phonelabel.Size = new System.Drawing.Size(101, 31);
+            this.phonelabel.Size = new System.Drawing.Size(86, 27);
             this.phonelabel.TabIndex = 7;
             this.phonelabel.Text = "phone";
             // 
             // namelabel
             // 
             this.namelabel.AutoSize = true;
-            this.namelabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.namelabel.Font = new System.Drawing.Font("Century Schoolbook", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.namelabel.Location = new System.Drawing.Point(666, 88);
             this.namelabel.Name = "namelabel";
-            this.namelabel.Size = new System.Drawing.Size(102, 31);
+            this.namelabel.Size = new System.Drawing.Size(87, 27);
             this.namelabel.TabIndex = 6;
             this.namelabel.Text = "Name ";
             // 

@@ -73,6 +73,7 @@
             this.checkedListBox.Name = "checkedListBox";
             this.checkedListBox.Size = new System.Drawing.Size(495, 644);
             this.checkedListBox.TabIndex = 3;
+            this.checkedListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox_ItemCheck);
             // 
             // Assigmentbutton
             // 
@@ -83,6 +84,7 @@
             this.Assigmentbutton.TabIndex = 6;
             this.Assigmentbutton.Text = "Assigment";
             this.Assigmentbutton.UseVisualStyleBackColor = true;
+            this.Assigmentbutton.Click += new System.EventHandler(this.Assigmentbutton_Click);
             // 
             // Sendbutton
             // 

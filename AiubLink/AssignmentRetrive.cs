@@ -14,10 +14,12 @@ namespace AiubLink
 {
     public partial class AssignmentRetrive : Form
     {
-       
-        public AssignmentRetrive()
+        private Form previousForm;
+
+        public AssignmentRetrive(Form previousForm)
         {
             InitializeComponent();
+            this.previousForm = previousForm;
         }
 
         private void AssignmentRetrive_Load(object sender, EventArgs e)
@@ -228,6 +230,12 @@ namespace AiubLink
                 int channelID = (int)ChannelComboBox.SelectedValue;
                 LoadAssignments(channelID);
             }
+        }
+
+        private void exitbutton_Click(object sender, EventArgs e)
+        {
+            previousForm.Show();
+            this.Close();
         }
     }
 }

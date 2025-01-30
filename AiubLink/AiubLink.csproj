@@ -82,8 +82,11 @@
     <Compile Include="AssignmentUpload.Designer.cs">
       <DependentUpon>AssignmentUpload.cs</DependentUpon>
     </Compile>
-    <Compile Include="CalenderForm.cs">
+    <Compile Include="CalendarForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalendarForm.Designer.cs">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
     </Compile>
     <Compile Include="channels.cs">
       <SubType>Form</SubType>
@@ -102,6 +105,12 @@
     </Compile>
     <Compile Include="ForgetPage.Designer.cs">
       <DependentUpon>ForgetPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentForm.Designer.cs">
+      <DependentUpon>StudentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="StudentMainPage.cs">
       <SubType>Form</SubType>
@@ -169,8 +178,8 @@
     <EmbeddedResource Include="AssignmentUpload.resx">
       <DependentUpon>AssignmentUpload.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CalenderForm.resx">
-      <DependentUpon>CalenderForm.cs</DependentUpon>
+    <EmbeddedResource Include="CalendarForm.resx">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="channels.resx">
       <DependentUpon>channels.cs</DependentUpon>
@@ -205,6 +214,9 @@
     </Compile>
     <EmbeddedResource Include="RegistrationPage.resx">
       <DependentUpon>RegistrationPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentForm.resx">
+      <DependentUpon>StudentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentMainPage.resx">
       <DependentUpon>StudentMainPage.cs</DependentUpon>

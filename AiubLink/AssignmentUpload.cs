@@ -14,10 +14,12 @@ namespace AiubLink
 {
     public partial class AssignmentUpload : Form
     {
-        private string selectedFile;
-        public AssignmentUpload()
+        
+        private Form previousForm;
+        public AssignmentUpload(Form previousForm)
         {
             InitializeComponent();
+            this.previousForm = previousForm;
         }
 
         private void BrowseButton_Click(object sender, EventArgs e)
@@ -34,8 +36,11 @@ namespace AiubLink
         {
         }
 
-         
-        
+        private void exitbutton_Click(object sender, EventArgs e)
+        {
+            previousForm.Show();
+            this.Close();
+        }
     }
     
 }

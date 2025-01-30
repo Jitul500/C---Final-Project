@@ -35,10 +35,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.UploadAssignmentButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.exitbutton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -79,6 +81,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.ForestGreen;
+            this.panel2.Controls.Add(this.exitbutton);
             this.panel2.Location = new System.Drawing.Point(155, -6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1148, 118);
@@ -104,17 +107,6 @@
             this.panel3.Size = new System.Drawing.Size(505, 413);
             this.panel3.TabIndex = 6;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(155, 520);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1125, 200);
-            this.dataGridView1.TabIndex = 7;
-            // 
             // UploadAssignmentButton
             // 
             this.UploadAssignmentButton.BackColor = System.Drawing.Color.Crimson;
@@ -127,6 +119,31 @@
             this.UploadAssignmentButton.Text = "UploadAssignment";
             this.UploadAssignmentButton.UseVisualStyleBackColor = false;
             this.UploadAssignmentButton.Click += new System.EventHandler(this.UploadAssignmentButton_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(155, 520);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1125, 200);
+            this.dataGridView1.TabIndex = 7;
+            // 
+            // exitbutton
+            // 
+            this.exitbutton.BackColor = System.Drawing.Color.ForestGreen;
+            this.exitbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("exitbutton.BackgroundImage")));
+            this.exitbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exitbutton.FlatAppearance.BorderSize = 0;
+            this.exitbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitbutton.Location = new System.Drawing.Point(1069, 18);
+            this.exitbutton.Name = "exitbutton";
+            this.exitbutton.Size = new System.Drawing.Size(44, 41);
+            this.exitbutton.TabIndex = 14;
+            this.exitbutton.UseVisualStyleBackColor = false;
+            this.exitbutton.Click += new System.EventHandler(this.exitbutton_Click);
             // 
             // AssignmentUpload
             // 
@@ -146,6 +163,7 @@
             this.Load += new System.EventHandler(this.AssignmentUpload_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -164,5 +182,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button UploadAssignmentButton;
+        private System.Windows.Forms.Button exitbutton;
     }
 }
