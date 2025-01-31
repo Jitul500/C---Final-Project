@@ -206,6 +206,7 @@
             this.Regbutton.TabIndex = 8;
             this.Regbutton.Text = "Registration";
             this.Regbutton.UseVisualStyleBackColor = true;
+            this.Regbutton.Click += new System.EventHandler(this.Regbutton_Click);
             // 
             // panel2
             // 

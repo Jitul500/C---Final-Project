@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AiubLink
 {
     public partial class AssignmentRetrive : Form
     {
+        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CS Final Project\AiubLink\DataBase\AiubLink.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=false";
         private Form previousForm;
 
         public AssignmentRetrive(Form previousForm)
@@ -27,78 +21,45 @@ namespace AiubLink
             LoadChannels();
         }
 
-      
-
-        private void CreateAssignmentButton_Click(object sender, EventArgs e)
+        private void LoadChannels()
         {
-            string description = DescriptionTextBox.Text.Trim();
-            string referenceFilePath = ReferenceFileTextBox.Text.Trim();
-            int channelId = GetSelectedChannelID(); // Implement this method to get the selected channel's ID
-
-            if (string.IsNullOrEmpty(description) || string.IsNullOrEmpty(referenceFilePath))
+            string query = "SELECT ChannelName FROM Channels";
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                MessageBox.Show("Please provide a description and upload reference material.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string destinationDirectory = @"E:\CS Final Project\UploadedAssignments";
-            string fileName = Path.GetFileName(referenceFilePath);
-            string destinationPath = Path.Combine(destinationDirectory, fileName);
-
-            try
-            {
-                if (!Directory.Exists(destinationDirectory))
-                {
-                    Directory.CreateDirectory(destinationDirectory);
-                }
-
-                File.Copy(referenceFilePath, destinationPath, true);
-
-                string connectionString = @"Your_Connection_String";
-                string query = "INSERT INTO Assignments (ChannelID, Description, ReferenceMaterialPath, CreatedAt) VALUES (@ChannelID, @Description, @ReferenceMaterialPath, @CreatedAt)";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                try
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@ChannelID", channelId);
-                        command.Parameters.AddWithValue("@Description", description);
-                        command.Parameters.AddWithValue("@ReferenceMaterialPath", destinationPath);
-                        command.Parameters.AddWithValue("@CreatedAt", DateTime.Now);
-
-                        command.ExecuteNonQuery();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            ChannelComboBox.Items.Clear();
+                            while (reader.Read())
+                            {
+                                ChannelComboBox.Items.Add(reader["ChannelName"].ToString());
+                            }
+                        }
                     }
                 }
-
-                MessageBox.Show("Assignment created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DescriptionTextBox.Clear();
-                ReferenceFileTextBox.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error creating assignment: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading channels: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
-        private int GetSelectedChannelID()
+        private void CreateAssignmentButton_Click(object sender, EventArgs e)
         {
-            if (ChannelComboBox.SelectedItem == null)
+            if (ChannelComboBox.SelectedItem == null || string.IsNullOrEmpty(DescriptionTextBox.Text))
             {
-                MessageBox.Show("Please select a channel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw new InvalidOperationException("No channel selected.");
+                MessageBox.Show("Please select a channel and provide a description.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            // Assuming you are using Key-Value pairs (ChannelName - ChannelID)
-            return (int)ChannelComboBox.SelectedValue;
-        }
+            string selectedChannel = ChannelComboBox.SelectedItem.ToString();
+            string description = DescriptionTextBox.Text;
 
-        private void LoadSubmissionsButton_Click(object sender, EventArgs e)
-        {
-            int assignmentId = GetSelectedAssignmentID(); // Implement this to get the selected assignment ID
-
-            string connectionString = @"Your_Connection_String";
-            string query = "SELECT StudentID, SubmittedFilePath, SubmittedAt FROM StudentAssignments WHERE AssignmentID = @AssignmentID";
+            string query = "INSERT INTO Assignments (ChannelID, Description, IsActive) VALUES ((SELECT ChannelID FROM Channels WHERE ChannelName = @ChannelName), @Description, 1)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -107,14 +68,69 @@ namespace AiubLink
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@AssignmentID", assignmentId);
+                        command.Parameters.AddWithValue("@ChannelName", selectedChannel);
+                        command.Parameters.AddWithValue("@Description", description);
+                        command.ExecuteNonQuery();
+                    }
 
+                    MessageBox.Show("Assignment created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadAssignments(selectedChannel);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error creating assignment: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void LoadAssignments(string channelName)
+        {
+            string query = "SELECT AssignmentID, Description FROM Assignments WHERE ChannelID = (SELECT ChannelID FROM Channels WHERE ChannelName = @ChannelName) AND IsActive = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ChannelName", channelName);
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
-                            DataTable dt = new DataTable();
-                            adapter.Fill(dt);
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            AssignmentsDataGridView.DataSource = dataTable;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading assignments: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
-                            SubmissionsDataGridView.DataSource = dt;
+        private void LoadSubmissions(string channelName)
+        {
+            string query = @"
+                SELECT s.UserID, u.UserName, s.FilePath 
+                FROM Submissions s 
+                INNER JOIN Users u ON s.UserID = u.UserID 
+                WHERE s.ChannelID = (SELECT ChannelID FROM Channels WHERE ChannelName = @ChannelName)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ChannelName", channelName);
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            SubmissionsDataGridView.DataSource = dataTable;
                         }
                     }
                 }
@@ -125,111 +141,11 @@ namespace AiubLink
             }
         }
 
-        private int GetSelectedAssignmentID()
-        {
-            if (AssignmentsDataGridView.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Please select an assignment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw new InvalidOperationException("No assignment selected.");
-            }
-
-            // Assuming the AssignmentID is in the first column of the DataGridView
-            return Convert.ToInt32(AssignmentsDataGridView.SelectedRows[0].Cells["AssignmentID"].Value);
-        }
-
-
-        private void LoadAssignments(int channelID)
-        {
-            string connectionString = @"Your_Connection_String";
-            string query = "SELECT AssignmentID, Description, FileName, UploadTime FROM Assignments WHERE ChannelID = @ChannelID";
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@ChannelID", channelID);
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                        {
-                            DataTable dt = new DataTable();
-                            adapter.Fill(dt);
-
-                            AssignmentsDataGridView.DataSource = dt;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading assignments: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        
-
-        private void LoadChannels()
-        {
-            string connectionString = @"Your_Connection_String";
-            string query = "SELECT ChannelID, ChannelName FROM Channels";
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                        {
-                            DataTable dt = new DataTable();
-                            adapter.Fill(dt);
-
-                            // Bind ChannelComboBox
-                            ChannelComboBox.DataSource = dt;
-                            ChannelComboBox.DisplayMember = "ChannelName";
-                            ChannelComboBox.ValueMember = "ChannelID";
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading channels: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void DownloadSubmissionButton_Click(object sender, EventArgs e)
-        {
-            if (SubmissionsDataGridView.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Please select a submission to download.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string filePath = SubmissionsDataGridView.SelectedRows[0].Cells["SubmittedFilePath"].Value.ToString();
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                FileName = Path.GetFileName(filePath),
-                Filter = "All files (*.*)|*.*"
-            };
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                File.Copy(filePath, saveFileDialog.FileName, true);
-                MessageBox.Show("File downloaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void ChannelComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ChannelComboBox.SelectedValue != null)
-            {
-                int channelID = (int)ChannelComboBox.SelectedValue;
-                LoadAssignments(channelID);
-            }
+            string selectedChannel = ChannelComboBox.SelectedItem.ToString();
+            LoadAssignments(selectedChannel);
+            LoadSubmissions(selectedChannel);
         }
 
         private void exitbutton_Click(object sender, EventArgs e)

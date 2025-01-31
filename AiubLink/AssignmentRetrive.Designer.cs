@@ -32,8 +32,6 @@
             this.SubmissionsDataGridView = new System.Windows.Forms.DataGridView();
             this.DescriptionTextBox = new System.Windows.Forms.RichTextBox();
             this.CreateAssignmentButton = new System.Windows.Forms.Button();
-            this.LoadSubmissionsButton = new System.Windows.Forms.Button();
-            this.DownloadSubmissionButton = new System.Windows.Forms.Button();
             this.ReferenceFileTextBox = new System.Windows.Forms.TextBox();
             this.ChannelComboBox = new System.Windows.Forms.ComboBox();
             this.AssignmentsDataGridView = new System.Windows.Forms.DataGridView();
@@ -44,10 +42,13 @@
             // 
             // SubmissionsDataGridView
             // 
+            this.SubmissionsDataGridView.AllowUserToAddRows = false;
+            this.SubmissionsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.SubmissionsDataGridView.BackgroundColor = System.Drawing.Color.Beige;
             this.SubmissionsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SubmissionsDataGridView.Location = new System.Drawing.Point(1, 188);
             this.SubmissionsDataGridView.Name = "SubmissionsDataGridView";
+            this.SubmissionsDataGridView.ReadOnly = true;
             this.SubmissionsDataGridView.RowHeadersWidth = 51;
             this.SubmissionsDataGridView.RowTemplate.Height = 24;
             this.SubmissionsDataGridView.Size = new System.Drawing.Size(622, 532);
@@ -56,7 +57,7 @@
             // DescriptionTextBox
             // 
             this.DescriptionTextBox.BackColor = System.Drawing.Color.Cornsilk;
-            this.DescriptionTextBox.Location = new System.Drawing.Point(224, 10);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(194, 10);
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(289, 130);
             this.DescriptionTextBox.TabIndex = 5;
@@ -65,7 +66,7 @@
             // CreateAssignmentButton
             // 
             this.CreateAssignmentButton.BackColor = System.Drawing.Color.Violet;
-            this.CreateAssignmentButton.Location = new System.Drawing.Point(11, 10);
+            this.CreateAssignmentButton.Location = new System.Drawing.Point(862, 61);
             this.CreateAssignmentButton.Name = "CreateAssignmentButton";
             this.CreateAssignmentButton.Size = new System.Drawing.Size(197, 50);
             this.CreateAssignmentButton.TabIndex = 6;
@@ -73,32 +74,10 @@
             this.CreateAssignmentButton.UseVisualStyleBackColor = false;
             this.CreateAssignmentButton.Click += new System.EventHandler(this.CreateAssignmentButton_Click);
             // 
-            // LoadSubmissionsButton
-            // 
-            this.LoadSubmissionsButton.BackColor = System.Drawing.Color.Violet;
-            this.LoadSubmissionsButton.Location = new System.Drawing.Point(984, 10);
-            this.LoadSubmissionsButton.Name = "LoadSubmissionsButton";
-            this.LoadSubmissionsButton.Size = new System.Drawing.Size(197, 50);
-            this.LoadSubmissionsButton.TabIndex = 7;
-            this.LoadSubmissionsButton.Text = "LoadSubmissions";
-            this.LoadSubmissionsButton.UseVisualStyleBackColor = false;
-            this.LoadSubmissionsButton.Click += new System.EventHandler(this.LoadSubmissionsButton_Click);
-            // 
-            // DownloadSubmissionButton
-            // 
-            this.DownloadSubmissionButton.BackColor = System.Drawing.Color.Violet;
-            this.DownloadSubmissionButton.Location = new System.Drawing.Point(984, 90);
-            this.DownloadSubmissionButton.Name = "DownloadSubmissionButton";
-            this.DownloadSubmissionButton.Size = new System.Drawing.Size(197, 50);
-            this.DownloadSubmissionButton.TabIndex = 8;
-            this.DownloadSubmissionButton.Text = "DownloadSubmission";
-            this.DownloadSubmissionButton.UseVisualStyleBackColor = false;
-            this.DownloadSubmissionButton.Click += new System.EventHandler(this.DownloadSubmissionButton_Click);
-            // 
             // ReferenceFileTextBox
             // 
             this.ReferenceFileTextBox.BackColor = System.Drawing.Color.Khaki;
-            this.ReferenceFileTextBox.Location = new System.Drawing.Point(224, 146);
+            this.ReferenceFileTextBox.Location = new System.Drawing.Point(194, 146);
             this.ReferenceFileTextBox.Name = "ReferenceFileTextBox";
             this.ReferenceFileTextBox.Size = new System.Drawing.Size(289, 22);
             this.ReferenceFileTextBox.TabIndex = 10;
@@ -107,21 +86,24 @@
             // 
             this.ChannelComboBox.BackColor = System.Drawing.Color.Khaki;
             this.ChannelComboBox.FormattingEnabled = true;
-            this.ChannelComboBox.Location = new System.Drawing.Point(529, 10);
+            this.ChannelComboBox.Location = new System.Drawing.Point(548, 51);
             this.ChannelComboBox.Name = "ChannelComboBox";
-            this.ChannelComboBox.Size = new System.Drawing.Size(179, 24);
+            this.ChannelComboBox.Size = new System.Drawing.Size(232, 24);
             this.ChannelComboBox.TabIndex = 11;
             this.ChannelComboBox.SelectedIndexChanged += new System.EventHandler(this.ChannelComboBox_SelectedIndexChanged);
             // 
             // AssignmentsDataGridView
             // 
+            this.AssignmentsDataGridView.AllowUserToAddRows = false;
+            this.AssignmentsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.AssignmentsDataGridView.BackgroundColor = System.Drawing.Color.Beige;
             this.AssignmentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AssignmentsDataGridView.Location = new System.Drawing.Point(649, 188);
             this.AssignmentsDataGridView.Name = "AssignmentsDataGridView";
+            this.AssignmentsDataGridView.ReadOnly = true;
             this.AssignmentsDataGridView.RowHeadersWidth = 51;
             this.AssignmentsDataGridView.RowTemplate.Height = 24;
-            this.AssignmentsDataGridView.Size = new System.Drawing.Size(589, 532);
+            this.AssignmentsDataGridView.Size = new System.Drawing.Size(627, 532);
             this.AssignmentsDataGridView.TabIndex = 12;
             // 
             // exitbutton
@@ -148,8 +130,6 @@
             this.Controls.Add(this.AssignmentsDataGridView);
             this.Controls.Add(this.ChannelComboBox);
             this.Controls.Add(this.ReferenceFileTextBox);
-            this.Controls.Add(this.DownloadSubmissionButton);
-            this.Controls.Add(this.LoadSubmissionsButton);
             this.Controls.Add(this.CreateAssignmentButton);
             this.Controls.Add(this.DescriptionTextBox);
             this.Controls.Add(this.SubmissionsDataGridView);
@@ -171,8 +151,6 @@
         private System.Windows.Forms.DataGridView SubmissionsDataGridView;
         private System.Windows.Forms.RichTextBox DescriptionTextBox;
         private System.Windows.Forms.Button CreateAssignmentButton;
-        private System.Windows.Forms.Button LoadSubmissionsButton;
-        private System.Windows.Forms.Button DownloadSubmissionButton;
         private System.Windows.Forms.TextBox ReferenceFileTextBox;
         private System.Windows.Forms.ComboBox ChannelComboBox;
         private System.Windows.Forms.DataGridView AssignmentsDataGridView;

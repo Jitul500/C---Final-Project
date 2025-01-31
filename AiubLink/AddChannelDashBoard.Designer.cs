@@ -41,10 +41,10 @@
             this.exitbutton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.channelpanel = new System.Windows.Forms.Panel();
-            this.refreshButton = new System.Windows.Forms.Button();
-            this.StudentCheckedListBox = new System.Windows.Forms.CheckedListBox();
-            this.coursecomboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.coursecomboBox = new System.Windows.Forms.ComboBox();
+            this.StudentCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.refreshbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ChanneldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -94,13 +94,13 @@
             // 
             this.createbutton.BackColor = System.Drawing.SystemColors.GrayText;
             this.createbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createbutton.Location = new System.Drawing.Point(1070, 21);
+            this.createbutton.Location = new System.Drawing.Point(1074, 9);
             this.createbutton.Name = "createbutton";
             this.createbutton.Size = new System.Drawing.Size(174, 58);
             this.createbutton.TabIndex = 11;
             this.createbutton.Text = "Create";
             this.createbutton.UseVisualStyleBackColor = false;
-            this.createbutton.Click += new System.EventHandler(this.createbutton_Click);
+            this.createbutton.Click += new System.EventHandler(this.createbutton_Click_1);
             // 
             // ChanneldataGridView
             // 
@@ -115,6 +115,7 @@
             this.ChanneldataGridView.RowTemplate.Height = 24;
             this.ChanneldataGridView.Size = new System.Drawing.Size(1275, 470);
             this.ChanneldataGridView.TabIndex = 10;
+            this.ChanneldataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ChanneldataGridView_CellClick);
             // 
             // StudentPanel
             // 
@@ -156,7 +157,7 @@
             this.exitbutton.Size = new System.Drawing.Size(44, 41);
             this.exitbutton.TabIndex = 4;
             this.exitbutton.UseVisualStyleBackColor = false;
-            this.exitbutton.Click += new System.EventHandler(this.exitbutton_Click);
+            this.exitbutton.Click += new System.EventHandler(this.exitbutton_Click_1);
             // 
             // label3
             // 
@@ -170,9 +171,9 @@
             // 
             // channelpanel
             // 
+            this.channelpanel.Controls.Add(this.refreshbutton);
             this.channelpanel.Controls.Add(this.label1);
             this.channelpanel.Controls.Add(this.coursecomboBox);
-            this.channelpanel.Controls.Add(this.refreshButton);
             this.channelpanel.Controls.Add(this.StudentCheckedListBox);
             this.channelpanel.Controls.Add(this.ChannelnametextBox);
             this.channelpanel.Controls.Add(this.label3);
@@ -185,38 +186,6 @@
             this.channelpanel.Name = "channelpanel";
             this.channelpanel.Size = new System.Drawing.Size(1278, 616);
             this.channelpanel.TabIndex = 22;
-            this.channelpanel.Paint += new System.Windows.Forms.PaintEventHandler(this.channelpanel_Paint);
-            // 
-            // refreshButton
-            // 
-            this.refreshButton.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.refreshButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshButton.Location = new System.Drawing.Point(1070, 82);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(174, 58);
-            this.refreshButton.TabIndex = 19;
-            this.refreshButton.Text = "Refresh";
-            this.refreshButton.UseVisualStyleBackColor = false;
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
-            // 
-            // StudentCheckedListBox
-            // 
-            this.StudentCheckedListBox.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentCheckedListBox.FormattingEnabled = true;
-            this.StudentCheckedListBox.Location = new System.Drawing.Point(816, 6);
-            this.StudentCheckedListBox.Name = "StudentCheckedListBox";
-            this.StudentCheckedListBox.Size = new System.Drawing.Size(176, 129);
-            this.StudentCheckedListBox.TabIndex = 18;
-            // 
-            // coursecomboBox
-            // 
-            this.coursecomboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coursecomboBox.FormattingEnabled = true;
-            this.coursecomboBox.Location = new System.Drawing.Point(256, 60);
-            this.coursecomboBox.Name = "coursecomboBox";
-            this.coursecomboBox.Size = new System.Drawing.Size(416, 28);
-            this.coursecomboBox.TabIndex = 20;
-            this.coursecomboBox.SelectedIndexChanged += new System.EventHandler(this.coursecomboBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -227,6 +196,36 @@
             this.label1.Size = new System.Drawing.Size(98, 20);
             this.label1.TabIndex = 21;
             this.label1.Text = "COURSES";
+            // 
+            // coursecomboBox
+            // 
+            this.coursecomboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coursecomboBox.FormattingEnabled = true;
+            this.coursecomboBox.Location = new System.Drawing.Point(256, 60);
+            this.coursecomboBox.Name = "coursecomboBox";
+            this.coursecomboBox.Size = new System.Drawing.Size(416, 28);
+            this.coursecomboBox.TabIndex = 20;
+            // 
+            // StudentCheckedListBox
+            // 
+            this.StudentCheckedListBox.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentCheckedListBox.FormattingEnabled = true;
+            this.StudentCheckedListBox.Location = new System.Drawing.Point(816, 6);
+            this.StudentCheckedListBox.Name = "StudentCheckedListBox";
+            this.StudentCheckedListBox.Size = new System.Drawing.Size(176, 129);
+            this.StudentCheckedListBox.TabIndex = 18;
+            // 
+            // refreshbutton
+            // 
+            this.refreshbutton.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.refreshbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshbutton.Location = new System.Drawing.Point(1074, 73);
+            this.refreshbutton.Name = "refreshbutton";
+            this.refreshbutton.Size = new System.Drawing.Size(174, 58);
+            this.refreshbutton.TabIndex = 22;
+            this.refreshbutton.Text = "Refresh";
+            this.refreshbutton.UseVisualStyleBackColor = false;
+            this.refreshbutton.Click += new System.EventHandler(this.refreshbutton_Click);
             // 
             // AddChannelDashBoard
             // 
@@ -265,8 +264,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel channelpanel;
         private System.Windows.Forms.CheckedListBox StudentCheckedListBox;
-        private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.ComboBox coursecomboBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button refreshbutton;
     }
 }

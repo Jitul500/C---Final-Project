@@ -33,11 +33,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.exitbutton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.UploadAssignmentButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.exitbutton = new System.Windows.Forms.Button();
+            this.ChannelComboBox = new System.Windows.Forms.ComboBox();
+            this.FilePathTextBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -87,6 +89,20 @@
             this.panel2.Size = new System.Drawing.Size(1148, 118);
             this.panel2.TabIndex = 4;
             // 
+            // exitbutton
+            // 
+            this.exitbutton.BackColor = System.Drawing.Color.ForestGreen;
+            this.exitbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("exitbutton.BackgroundImage")));
+            this.exitbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exitbutton.FlatAppearance.BorderSize = 0;
+            this.exitbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitbutton.Location = new System.Drawing.Point(1069, 18);
+            this.exitbutton.Name = "exitbutton";
+            this.exitbutton.Size = new System.Drawing.Size(44, 41);
+            this.exitbutton.TabIndex = 14;
+            this.exitbutton.UseVisualStyleBackColor = false;
+            this.exitbutton.Click += new System.EventHandler(this.exitbutton_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -100,6 +116,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.SlateGray;
+            this.panel3.Controls.Add(this.FilePathTextBox);
+            this.panel3.Controls.Add(this.ChannelComboBox);
             this.panel3.Controls.Add(this.UploadAssignmentButton);
             this.panel3.Controls.Add(this.BrowseButton);
             this.panel3.Location = new System.Drawing.Point(775, 109);
@@ -131,19 +149,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(1125, 200);
             this.dataGridView1.TabIndex = 7;
             // 
-            // exitbutton
+            // ChannelComboBox
             // 
-            this.exitbutton.BackColor = System.Drawing.Color.ForestGreen;
-            this.exitbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("exitbutton.BackgroundImage")));
-            this.exitbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.exitbutton.FlatAppearance.BorderSize = 0;
-            this.exitbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitbutton.Location = new System.Drawing.Point(1069, 18);
-            this.exitbutton.Name = "exitbutton";
-            this.exitbutton.Size = new System.Drawing.Size(44, 41);
-            this.exitbutton.TabIndex = 14;
-            this.exitbutton.UseVisualStyleBackColor = false;
-            this.exitbutton.Click += new System.EventHandler(this.exitbutton_Click);
+            this.ChannelComboBox.FormattingEnabled = true;
+            this.ChannelComboBox.Location = new System.Drawing.Point(112, 93);
+            this.ChannelComboBox.Name = "ChannelComboBox";
+            this.ChannelComboBox.Size = new System.Drawing.Size(227, 24);
+            this.ChannelComboBox.TabIndex = 3;
+            // 
+            // FilePathTextBox
+            // 
+            this.FilePathTextBox.Location = new System.Drawing.Point(319, 9);
+            this.FilePathTextBox.Name = "FilePathTextBox";
+            this.FilePathTextBox.Size = new System.Drawing.Size(174, 22);
+            this.FilePathTextBox.TabIndex = 4;
             // 
             // AssignmentUpload
             // 
@@ -166,6 +185,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,5 +203,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button UploadAssignmentButton;
         private System.Windows.Forms.Button exitbutton;
+        private System.Windows.Forms.ComboBox ChannelComboBox;
+        private System.Windows.Forms.TextBox FilePathTextBox;
     }
 }
